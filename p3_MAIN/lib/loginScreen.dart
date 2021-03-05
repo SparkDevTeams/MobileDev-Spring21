@@ -17,8 +17,15 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Sign In:",
+                  "FIU P3",
                   style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  "Sign In:",
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.normal),
                 ),
                 SizedBox(
                   height: 15,
