@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "FIU P3",
+                  "FIU P3 SparkDev",
                   style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
