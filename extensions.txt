@@ -1,0 +1,4 @@
+PLEASE PUT THE NAME OF EXTENSIONS IN the form of: "Name" : "URL to the pubdev" => "page you are working on/name"
+
+"firebase_auth 1.0.0" : "https://pub.dev/packages/firebase_auth" => "MAIN/Vincent Carrancho"
+"firebase_core 1.0.0" : "https://pub.dev/packages/firebase_core" => "MAIN/Vincent Carrancho"
