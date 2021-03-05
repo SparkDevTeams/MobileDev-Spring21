@@ -1,0 +1,3 @@
+These files should be copy and pasted into your working directory.
+
+For the page template dart file, you need to rename the class of the stateless widget.
