@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.normal),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
                 UserPassLogin(),
               ],
