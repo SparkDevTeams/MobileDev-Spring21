@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'testHomePage.dart';
 
 // TODO: change into stateful widget
 
@@ -107,9 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         "Sign In",
                         style: TextStyle(fontSize: 20),
                       ),
-                      onPressed: () {
-                        return null;
-                      },
+                      onPressed: signIn,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
                     ),
@@ -123,13 +123,21 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-/*
-  void signIn() {
-    final _form = _formkey.currentState;
-    if (_formkey.validate()) {
+  Future<void> signIn() async {
+    final formState = _formkey.currentState;
+    if (formState.validate()) {
+      formState.save();
+      try {
+        User user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
+                email: _pantherid, password: _password))
+            .user;
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => TestHomePage()));
+      } catch (e) {
+        print(e.message);
+      }
+
       // login to firebase
     }
   }
-
-*/
 }
