@@ -3,10 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'ButtonWidget.dart';
 
 // Results page for users authorized to go on campus.
-class ResultsAUTHORIZED extends StatelessWidget {
+class ResultsUNAUTHORIZED extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const FIUNavyBlue = const Color.fromRGBO(8, 30, 63, 1.0);   // FIU's navy blue color.
+    const FIUMagenta = const Color.fromRGBO(204, 0, 102, 1.0);  // FIU's magenta color.
     return Scaffold(
       // Empty navigation bar, not necessary for this page.
         appBar: AppBar(
@@ -39,17 +40,17 @@ class ResultsAUTHORIZED extends StatelessWidget {
                   height: 140.0,
                   width: 315.0,
                   decoration: BoxDecoration(    // The edged box itself.
-                      color: FIUNavyBlue,
+                      color: FIUMagenta,
                       borderRadius: BorderRadius.all(Radius.circular(30))),
                   // To hold text within the box.
-                  child: Padding(  
+                  child: Padding(
                     padding: const EdgeInsets.all(25.0),
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "You are AUTHORIZED to go on campus, be safe!",
+                        "You are NOT AUTHORIZED to go on campus. Please stay home.",
                         style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: 19.0,
                             color: Colors.white,
                             fontWeight: FontWeight.w600),
                       ),
@@ -65,17 +66,17 @@ class ResultsAUTHORIZED extends StatelessWidget {
                   child: RichText(
                       text: TextSpan(
                     style: TextStyle(
-                        fontSize: 19.0,
+                        fontSize: 18.0,
                         color: Colors.black,
                         fontWeight: FontWeight.w600),
                     children: <TextSpan>[
                       TextSpan(
                         text:
-                            'Remember these guidelines when you visit campus:\n',
+                            'Do NOT visit campus at all.\n',
                       ),
                       TextSpan(
                           text:
-                              '1. Wear a face mask at ALL TIMES.\n2. Stay 6 ft. apart from others.\n3. Wash your hands and use hand sanitizer.\n4. Clean surfaces and equipment before use.',
+                              'Please quarantine for at least 14 days prior to returning on campus. If you need resources to help you take the next step, please go to the home page and click on "COVID-19 Resources."',
                           style: TextStyle(
                               fontSize: 15.0,
                               color: Colors.black,
