@@ -12,3 +12,14 @@ None of the Flutter projects inside the Pages directory have been initialized. T
 2. git add Pages/{your page you're working on}
 3. git commit -m "{Your message here informing team of any changes}"
 4. git push
+
+**UPDATE 3/8/2021**
+
+Implemented Firebase Auth for IOS and Android operating systems. Run 'flutter run' inside the 'p3_MAIN' folder.
+  - User: user@email.com
+  - password: password
+
+Downgraded Firebase plugins to:
+  - firebase_auth: ^0.20.1
+  - firebase_core: ^0.7.0
+  
