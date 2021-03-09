@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:p3_MAIN/homeScreen.dart';
-//import 'package:p3_MAIN/theme/colors.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
-import 'loginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'loginScreen.dart';
+import 'package:p3_MAIN/homeScreen.dart';
+import './settings/settingsPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => LoginScreen(),
         '/home': (context) => HomeScreen(),
+        '/settings': (context) => SettingsPage()
       },
       theme: ThemeData(
           textTheme: TextTheme(
