@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFormField(
                     validator: (input) {
                       if (input.isEmpty) {
-                        return "Enter Valid ID";
+                        return "Please enter a valid ID";
                       }
                     },
                     onSaved: (input) => _pantherid = input,

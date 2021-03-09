@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:p3_MAIN/homeScreen.dart';
+//import 'package:p3_MAIN/theme/colors.dart';
+import 'package:p3_MAIN/theme/themeData.dart';
 import 'loginScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -18,7 +20,15 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/home': (context) => HomeScreen(),
       },
-      theme: ThemeData(),
+      theme: ThemeData(
+          textTheme: TextTheme(
+              headline1: TextStyle(
+                  //let headline 1 be the title for each page
+                  fontSize: 36,
+                  color: AppTheme.Colors.blueFIU,
+                  fontWeight: FontWeight.bold),
+              bodyText1:
+                  TextStyle(fontSize: 15, color: AppTheme.Colors.blueFIU))),
       title: 'Flutter Demo',
       home: LoginScreen(),
     );
