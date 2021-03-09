@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'ButtonWidget.dart';
 
-// Results page for users authorized to go on campus.
+// Results page for users unauthorized to go on campus.
 class ResultsUNAUTHORIZED extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
