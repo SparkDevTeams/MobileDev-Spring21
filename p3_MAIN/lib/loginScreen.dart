@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'testHomePage.dart';
-
-// TODO: change into stateful widget
+import 'package:p3_MAIN/theme/themeData.dart';
+import 'homeScreen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -37,8 +36,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Text(
                     "Sign In:",
-                    style:
-                        TextStyle(fontSize: 30, fontWeight: FontWeight.normal),
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.normal,
+                        color: AppTheme.Colors.blueFIU),
                   ),
                   SizedBox(
                     height: 10,
@@ -64,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                           borderSide: BorderSide(
-                            color: Colors.amber,
+                            color: AppTheme.Colors.brightGoldFIU,
                           ),
                         )),
                   ),
@@ -93,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20.0),
                             borderSide: BorderSide(
-                              color: Colors.amber,
+                              color: AppTheme.Colors.brightGoldFIU,
                             ),
                           ))),
                   SizedBox(
@@ -104,10 +105,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 50,
                     width: 150,
                     child: RaisedButton(
-                      color: Colors.amber,
+                      color: AppTheme.Colors.brightGoldFIU,
                       child: Text(
-                        "Sign In",
-                        style: TextStyle(fontSize: 20),
+                        "Log in",
+                        style: TextStyle(
+                            fontSize: 20, color: AppTheme.Colors.blueFIU),
                       ),
                       onPressed: signIn,
                       shape: RoundedRectangleBorder(
@@ -131,8 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
         User user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
                 email: _pantherid, password: _password))
             .user;
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => TestHomePage()));
+        Navigator.pushReplacementNamed(context, '/home');
       } catch (e) {
         print(e.message);
       }
