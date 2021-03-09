@@ -28,13 +28,13 @@ class ResultsUNAUTHORIZED extends StatelessWidget {
                         style: TextStyle(
                           color: FIUNavyBlue,
                           fontFamily: "Be Vietnam",
-                          fontSize: 40,
-                          fontWeight: FontWeight.w600,
+                          fontSize: 39,
+                          fontWeight: FontWeight.w800,
                         )),
                   )),
               // Edged box in the center of the screen, contains AUTHORIZED / UNAUTHORIZED text.
               Container(
-                padding: EdgeInsets.only(top: 90),    // Position of both the box and the text within it on page.
+                padding: EdgeInsets.only(top: 70),    // Position of both the box and the text within it on page.
                 alignment: Alignment.topCenter,
                 child: Container(
                   height: 140.0,
@@ -50,7 +50,8 @@ class ResultsUNAUTHORIZED extends StatelessWidget {
                       child: Text(
                         "You are NOT AUTHORIZED to go on campus. Please stay home.",
                         style: TextStyle(
-                            fontSize: 19.0,
+                            fontFamily: "Be Vietnam",
+                            fontSize: 17.0,
                             color: Colors.white,
                             fontWeight: FontWeight.w600),
                       ),
@@ -66,6 +67,7 @@ class ResultsUNAUTHORIZED extends StatelessWidget {
                   child: RichText(
                       text: TextSpan(
                     style: TextStyle(
+                        fontFamily: "Be Vietnam",
                         fontSize: 18.0,
                         color: Colors.black,
                         fontWeight: FontWeight.w600),
@@ -78,14 +80,14 @@ class ResultsUNAUTHORIZED extends StatelessWidget {
                           text:
                               'Please quarantine for at least 14 days prior to returning on campus. If you need resources to help you take the next step, please go to the home page and click on "COVID-19 Resources."',
                           style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 14.0,
                               color: Colors.black,
                               fontWeight: FontWeight.normal))
                     ],
                   ))),
               // Home button.
               Container(
-                padding: EdgeInsets.only(top: 100),
+                padding: EdgeInsets.only(top: 86),
                 alignment: Alignment.topCenter,
                 child: RoundedButtons('Home', 18.0, 50.0, 200.0, FIUNavyBlue,
                     Colors.white, 25.0, () {}),
