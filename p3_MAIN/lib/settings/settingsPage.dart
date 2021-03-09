@@ -8,23 +8,27 @@ class SettingsPage extends StatelessWidget {
         // Making app bar invisible:
         shadowColor: Colors.transparent,
         backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.only(left: 25, right: 25),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("SettingsPage"),
+            Text(
+              "Settings & Preferences",
+              style: Theme.of(context).textTheme.headline1,
+            ),
             RaisedButton(
               child: Text("Back to home"),
               onPressed: () {
                 Navigator.pop(context);
               },
-            )
-            // Inside this column => children of column,
-            // you can have multiple widgets inside. Then it
-            // stacks from top down.
-            // depending on the page, you might have to use
-            //stacked widget.
+            ),
+            RaisedButton(
+                child: Text("Test Signout Button"),
+                onPressed: () {
+                  Navigator.popAndPushNamed(context, '/login');
+                }),
           ],
           crossAxisAlignment: CrossAxisAlignment.start,
         ),

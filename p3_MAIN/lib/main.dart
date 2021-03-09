@@ -29,8 +29,14 @@ class MyApp extends StatelessWidget {
                   fontSize: 36,
                   color: AppTheme.Colors.blueFIU,
                   fontWeight: FontWeight.bold),
-              bodyText1:
-                  TextStyle(fontSize: 15, color: AppTheme.Colors.blueFIU))),
+              bodyText1: TextStyle(
+                  fontSize: 15,
+                  color: AppTheme.Colors.blueFIU,
+                  fontWeight: FontWeight.w400),
+              subtitle1: TextStyle(
+                  fontSize: 13,
+                  color: AppTheme.Colors.blueFIU,
+                  fontWeight: FontWeight.w400))),
       title: 'Flutter Demo',
       home: LoginScreen(),
     );
