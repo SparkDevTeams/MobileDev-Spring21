@@ -27,13 +27,13 @@ class ResultsAUTHORIZED extends StatelessWidget {
                         style: TextStyle(
                           color: FIUNavyBlue,
                           fontFamily: "Be Vietnam",
-                          fontSize: 40,
-                          fontWeight: FontWeight.w600,
+                          fontSize: 39,
+                          fontWeight: FontWeight.w800,
                         )),
                   )),
               // Edged box in the center of the screen, contains AUTHORIZED / UNAUTHORIZED text.
               Container(
-                padding: EdgeInsets.only(top: 90),    // Position of both the box and the text within it on page.
+                padding: EdgeInsets.only(top: 70),    // Position of both the box and the text within it on page.
                 alignment: Alignment.topCenter,
                 child: Container(
                   height: 140.0,
@@ -49,7 +49,8 @@ class ResultsAUTHORIZED extends StatelessWidget {
                       child: Text(
                         "You are AUTHORIZED to go on campus, be safe!",
                         style: TextStyle(
-                            fontSize: 18.0,
+                            fontFamily: "Be Vietnam",
+                            fontSize: 17.0,
                             color: Colors.white,
                             fontWeight: FontWeight.w600),
                       ),
@@ -65,7 +66,8 @@ class ResultsAUTHORIZED extends StatelessWidget {
                   child: RichText(
                       text: TextSpan(
                     style: TextStyle(
-                        fontSize: 19.0,
+                        fontFamily: "Be Vietnam",
+                        fontSize: 18.0,
                         color: Colors.black,
                         fontWeight: FontWeight.w600),
                     children: <TextSpan>[
@@ -77,14 +79,14 @@ class ResultsAUTHORIZED extends StatelessWidget {
                           text:
                               '1. Wear a face mask at ALL TIMES.\n2. Stay 6 ft. apart from others.\n3. Wash your hands and use hand sanitizer.\n4. Clean surfaces and equipment before use.',
                           style: TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 14.0,
                               color: Colors.black,
                               fontWeight: FontWeight.normal))
                     ],
                   ))),
               // Home button.
               Container(
-                padding: EdgeInsets.only(top: 100),
+                padding: EdgeInsets.only(top: 80),
                 alignment: Alignment.topCenter,
                 child: RoundedButtons('Home', 18.0, 50.0, 200.0, FIUNavyBlue,
                     Colors.white, 25.0, () {}),
