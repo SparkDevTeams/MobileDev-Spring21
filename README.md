@@ -27,7 +27,8 @@ In the 'main.dart' file inside the 'p3_MAIN' folder, 2 new preset text styles wh
   
   To use the colors enter: (if you're working in the p3_MAIN directory)
     - color: AppTheme.colors.NameOfColor
+  
   To use the preset text styles enter:
     - style: Theme.of(context).textTheme.bodyText1
-    - 
+
 Added login and home screen route to app.
