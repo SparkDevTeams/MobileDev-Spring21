@@ -16,7 +16,7 @@ None of the Flutter projects inside the Pages directory have been initialized. T
 # **UPDATE 3/8/2021**
 
 Implemented Firebase Auth for IOS and Android operating systems. Run 'flutter run' inside the 'p3_MAIN' folder.
-  - User: user@email.com
+  - User: user@gmail.com
   - password: password
 
 Downgraded Firebase plugins to:
@@ -33,4 +33,11 @@ To use the preset text styles enter:
   - style: Theme.of(context).textTheme.bodyText1
 
 Added login and home screen route to app.
+
+# **UPDATE 3/10/2021**
+
+Implemented the Resources and Information Page:
+- Added url_launcher 6.0.2 to /p3_MAIN/pubspec.yaml file.
+- Implemented URL Launcher.
+- Set up the page routes to and from the resources page.
 
