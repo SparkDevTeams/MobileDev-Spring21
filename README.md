@@ -41,3 +41,5 @@ Implemented the Resources and Information Page:
 - Implemented URL Launcher.
 - Set up the page routes to and from the resources page.
 
+Mauricio and Felix are done with their pages: NEEDS to be reassigned.
+
