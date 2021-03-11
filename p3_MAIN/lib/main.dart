@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'loginScreen.dart';
 import 'package:p3_MAIN/homeScreen.dart';
 import './settings/settingsPage.dart';
+import './resourcesInfo/resources.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => LoginScreen(),
         '/home': (context) => HomeScreen(),
-        '/settings': (context) => SettingsPage()
+        '/settings': (context) => SettingsPage(),
+        '/resources': (context) => ResourcesPage()
       },
       theme: ThemeData(
           textTheme: TextTheme(
