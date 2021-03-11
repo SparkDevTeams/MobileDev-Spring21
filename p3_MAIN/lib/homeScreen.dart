@@ -106,10 +106,13 @@ class HomePageButton extends StatelessWidget {
             RoundedRectangleBorder(borderRadius: new BorderRadius.circular(25)),
         child: Column(
           children: <Widget>[
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "$title",
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Container(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "$title",
+                ),
               ),
             ),
             Container(
