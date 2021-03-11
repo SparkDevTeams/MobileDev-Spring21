@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                     child: HomePageButton(
                         "COVID-19 Resources",
                         "Need resources to assist you during this time? Click here.",
-                        null,
+                        '/resources',
                         120.0),
                   ),
                 ],
