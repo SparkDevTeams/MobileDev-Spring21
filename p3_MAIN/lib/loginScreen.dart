@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
 import 'homeScreen.dart';
+import './services/database.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -133,6 +135,8 @@ class _LoginScreenState extends State<LoginScreen> {
         User user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
                 email: _pantherid, password: _password))
             .user;
+        print(user.uid);
+        await DatabaseService(authID: user.uid);
         Navigator.pushReplacementNamed(context, '/home');
       } catch (e) {
         print(e.message);
