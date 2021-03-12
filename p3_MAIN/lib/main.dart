@@ -6,6 +6,7 @@ import 'loginScreen.dart';
 import 'package:p3_MAIN/homeScreen.dart';
 import './settings/settingsPage.dart';
 import './resourcesInfo/resources.dart';
+import './screeningCheck/screeningChecklist.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/home': (context) => HomeScreen(),
         '/settings': (context) => SettingsPage(),
-        '/resources': (context) => ResourcesPage()
+        '/resources': (context) => ResourcesPage(),
+        'checklist_p1': (context) => CheckListPageOne()
       },
       theme: ThemeData(
           textTheme: TextTheme(
@@ -35,6 +37,8 @@ class MyApp extends StatelessWidget {
                   fontSize: 15,
                   color: AppTheme.Colors.blueFIU,
                   fontWeight: FontWeight.w400),
+              bodyText2:
+                  TextStyle(fontSize: 17, color: AppTheme.Colors.blueFIU),
               subtitle1: TextStyle(
                   fontSize: 13,
                   color: AppTheme.Colors.blueFIU,
