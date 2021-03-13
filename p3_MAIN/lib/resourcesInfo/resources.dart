@@ -174,7 +174,7 @@ class ResourcesPage extends StatelessWidget {
                   height: 50.0,
                   width: 200.0,
                   child: RaisedButton(
-                    color: Colors.white,
+                    //color: Colors.white,
                     textColor: Color.fromRGBO(8, 30, 63, 1.0),
                     onPressed: () {
                       Navigator.pop(context);
@@ -184,8 +184,8 @@ class ResourcesPage extends StatelessWidget {
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        side: BorderSide(color: Colors.black)),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
                   ),
                 ),
               ),

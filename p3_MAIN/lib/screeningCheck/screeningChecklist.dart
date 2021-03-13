@@ -4,27 +4,59 @@ import 'package:p3_MAIN/UIWidgets/ButtonWidgets.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
 
 // Checklist page, with check boxes.
-class CheckListPageOne extends StatelessWidget {
+class CheckListPageOne extends StatefulWidget {
+  @override
+  _CheckListPageOneState createState() => _CheckListPageOneState();
+}
+
+class _CheckListPageOneState extends State<CheckListPageOne> {
+  int initialValue = 0;
+
   @override
   Widget build(BuildContext context) {
-    // FIU's navy blue color.
+    // Let false be the initial value
 
-    // All checkbox options
+    void nullreturn() {
+      return null;
+    }
 
-    CheckBox fever =
-        CheckBox(title: "Fever (temperature of 100.4°F or higher) or chills");
-    CheckBox cough = CheckBox(title: "Cough");
-    CheckBox breath =
-        CheckBox(title: "Shortness of breath / Difficulty breathing");
-    CheckBox fatigue = CheckBox(title: "Fatigue");
-    CheckBox muscle = CheckBox(title: "Muscle or body aches");
-    CheckBox headaches = CheckBox(title: "Headaches");
-    CheckBox taste = CheckBox(title: "New loss of taste or smell");
-    CheckBox throat = CheckBox(title: "Sore throat");
-    CheckBox nose = CheckBox(title: "Congestion or runny nose");
-    CheckBox nausea = CheckBox(title: "Nausea or vomiting");
-    CheckBox diarrhea = CheckBox(title: "Diarrhea");
-    CheckBox noSymp = CheckBox(title: "I am experiencing no symptoms");
+    CheckBox fever = CheckBox(
+      title: "Fever (temperature of 100.4°F or higher) or chills",
+      value: true,
+      funct: nullreturn,
+    );
+    CheckBox cough = CheckBox(
+        title: "Cough",
+        value: false,
+        funct: () {
+          initialValue++;
+        });
+    CheckBox breath = CheckBox(
+        title: "Shortness of breath / Difficulty breathing",
+        value: false,
+        funct: nullreturn);
+    CheckBox fatigue =
+        CheckBox(title: "Fatigue", value: false, funct: nullreturn);
+    CheckBox muscle = CheckBox(
+        title: "Muscle or body aches", value: false, funct: nullreturn);
+    CheckBox headaches =
+        CheckBox(title: "Headaches", value: false, funct: nullreturn);
+    CheckBox taste = CheckBox(
+        title: "New loss of taste or smell", value: false, funct: nullreturn);
+    CheckBox throat =
+        CheckBox(title: "Sore throat", value: false, funct: nullreturn);
+    CheckBox nose = CheckBox(
+        title: "Congestion or runny nose", value: false, funct: nullreturn);
+    CheckBox nausea =
+        CheckBox(title: "Nausea or vomiting", value: false, funct: nullreturn);
+    CheckBox diarrhea =
+        CheckBox(title: "Diarrhea", value: false, funct: nullreturn);
+    CheckBox noSymp = CheckBox(
+        title: "I am experiencing no symptoms",
+        value: false,
+        funct: () {
+          setState(() {});
+        });
 
     List options = [
       fever,
@@ -124,22 +156,18 @@ class CheckListPageOne extends StatelessWidget {
 // Checkbox tile stateful widget
 class CheckBox extends StatefulWidget {
   final String title; // Symptom being experienced
-  bool _value = false;
-  bool greyOut;
+  bool value;
+  Function funct;
 
-  CheckBox({Key key, this.title}) : super(key: key); // Constructor
+  CheckBox({this.title, this.value, this.funct}); // Constructor
 
   // Return whether or not check box is checked
   bool get getValue {
-    return _value;
+    return value;
   }
 
   set setValue(bool aValue) {
-    _value = aValue;
-  }
-
-  set setGreyOut(bool aValue) {
-    greyOut = aValue;
+    value = aValue;
   }
 
   @override
@@ -147,11 +175,12 @@ class CheckBox extends StatefulWidget {
 }
 
 class _CheckBoxState extends State<CheckBox> {
+  int _counter = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
         child: CheckboxListTile(
-            value: widget._value,
+            value: widget.value,
             //contentPadding: const EdgeInsets.only(right: 10, left: 20),
             controlAffinity: ListTileControlAffinity.platform,
             title: Text(widget.title,
@@ -159,8 +188,19 @@ class _CheckBoxState extends State<CheckBox> {
             activeColor: Color.fromRGBO(8, 30, 63, 1.0),
             onChanged: (value) {
               setState(() {
-                widget._value = value;
+                widget.value = !widget.value;
+                if (widget.value == true) {
+                  _counter++;
+                  print(widget.title + ": " + _counter.toString());
+                  return _counter;
+                } else if (widget.value == false) {
+                  _counter--;
+                  print(widget.title + ": " + _counter.toString());
+                  return _counter;
+                }
               });
             }));
   }
 }
+
+//int returnNumber() {}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:p3_MAIN/theme/colors.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
 import './UIWidgets/ButtonWidgets.dart';
 //import 'package:p3_MAIN/theme/themeData.dart';
@@ -61,26 +62,34 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 15),
                     child: HomePageButton(
                         "Screening Checklist",
-                        "Please fill this out before coming on campus!",
+                        "Please fill this out before coming on campus! This checklist will determine if you are cleared to go on campus or not.",
                         'checklist_p1',
-                        150.0),
+                        170.0),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: HomePageButton(
                         "Exposure Notifications",
-                        "Tap to view your history of exposures of COVID-19 or submit a positive test alert.",
+                        "Tap here to view your history of exposures of COVID-19 or submit a positive test alert.",
                         null,
-                        120.0),
+                        140.0),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: HomePageButton(
                         "COVID-19 Resources",
-                        "Need resources to assist you during this time? Click here.",
+                        "Do you need resources to assist you during this time? Click here.",
                         '/resources',
-                        120.0),
+                        140.0),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: HomePageButton(
+                        "On Campus Guidelines",
+                        "Please read these listed guidelines before coming on campus.",
+                        null,
+                        140.0),
+                  )
                 ],
               ),
             ),
@@ -104,24 +113,42 @@ class HomePageButton extends StatelessWidget {
       child: RaisedButton(
         shape:
             RoundedRectangleBorder(borderRadius: new BorderRadius.circular(25)),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Container(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "$title",
+        child: Row(
+          children: [
+            Container(
+              width: 170,
+              child: Center(
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "$title",
+                          style: TextStyle(
+                              color: AppTheme.Colors.blueFIU,
+                              fontSize: 26,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      //padding: EdgeInsets.only(top: 15),
+                      //color: Colors.amber,
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "$subheading",
+                        style: TextStyle(
+                          color: AppTheme.Colors.blueFIU,
+                          fontSize: 13,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
               ),
             ),
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "$subheading",
-                style: Theme.of(context).textTheme.subtitle1,
-              ),
-            )
           ],
         ),
         onPressed: () {
