@@ -26,10 +26,9 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomeScreen(),
         '/settings': (context) => SettingsPage(),
         '/resources': (context) => ResourcesPage(),
-        'checklist_p1': (context) => CheckListPageOne(),
+        '/checklist_p1': (context) => CheckListPageOne(),
         '/registerPage': (context) => RegisterPage(),
         '/guidelines': (context) => Guidelines()
-
       },
       theme: ThemeData(
           textTheme: TextTheme(
