@@ -1,3 +1,5 @@
+![loginLogoV1](https://user-images.githubusercontent.com/71295634/111056805-04571c80-8450-11eb-89e6-1d9e5edc7ce2.png)
+
 # MobileDev-Spring21
 
 Most of you will be working inside of the Pages/"your assigned page".
@@ -43,3 +45,18 @@ Implemented the Resources and Information Page:
 
 Mauricio and Felix are done with their pages: NEEDS to be reassigned.
 
+# **UPDATE 3/13/2021**
+
+Implemented Screening Checklist page 1 (incomplete as of writing). Problems with computer logic and OOP logic.
+
+Added a 'On Campus/Workplace Guidelines Page' in lieu of the orginal updates tab for now.
+
+Added a register with email and password for the login to implement the Firebase user records much more easier. When signing up you will be asked for an email, first/last name, password (along with a confirmation of the password). Upon registering 4 key value pairs are written within the Firebase database:
+- email: 'string'
+- exposure_id: 'string' => exposure ID is generated on press of the register button as long as all the other inputs are filled. Exposure ID is a 20 character long string that is random; this will be used by the contact tracing protocol that will be hopefully implemented.
+- first_name: 'string'
+- last_name: 'string'
+
+**DO NOT SPAM THE REGISTER BUTTON WITH A BUNCH OF RANDOM EMAILS. FIREBASE WILL CHARGGE ME MONEY FOR EVERY READ AND WRITE THAT IS ABOVE A CERTAIN CAP.** After registering with all fields fill out it will redirect you back to the sign in page. Then with your newly created account, you can log in.
+
+**TODO:** Implement some type of input validation.

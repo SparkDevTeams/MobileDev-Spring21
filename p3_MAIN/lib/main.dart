@@ -7,6 +7,7 @@ import 'package:p3_MAIN/homeScreen.dart';
 import './settings/settingsPage.dart';
 import './resourcesInfo/resources.dart';
 import './screeningCheck/screeningChecklist.dart';
+import './signup.dart';
 import './guidelines/guideLines.dart';
 
 void main() async {
@@ -26,7 +27,9 @@ class MyApp extends StatelessWidget {
         '/settings': (context) => SettingsPage(),
         '/resources': (context) => ResourcesPage(),
         'checklist_p1': (context) => CheckListPageOne(),
-        '/guidelines': (context) => Guidelines(),
+        '/registerPage': (context) => RegisterPage(),
+        '/guidelines': (context) => Guidelines()
+
       },
       theme: ThemeData(
           textTheme: TextTheme(
