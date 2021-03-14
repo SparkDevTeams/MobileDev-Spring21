@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                     child: HomePageButton(
                         "Screening Checklist",
                         "Please fill this out before coming on campus! This checklist will determine if you are cleared to go on campus or not.",
-                        'checklist_p1',
+                        '/checklist_p1',
                         170.0),
                   ),
                   Padding(

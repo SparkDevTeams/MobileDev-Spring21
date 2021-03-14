@@ -7,6 +7,7 @@ import 'package:p3_MAIN/homeScreen.dart';
 import './settings/settingsPage.dart';
 import './resourcesInfo/resources.dart';
 import './screeningCheck/screeningChecklist.dart';
+import './signup.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomeScreen(),
         '/settings': (context) => SettingsPage(),
         '/resources': (context) => ResourcesPage(),
-        'checklist_p1': (context) => CheckListPageOne()
+        '/checklist_p1': (context) => CheckListPageOne(),
+        '/registerPage': (context) => RegisterPage()
       },
       theme: ThemeData(
           textTheme: TextTheme(
