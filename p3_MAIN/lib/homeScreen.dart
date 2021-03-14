@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Container(
                     child: Text(
-                      "Welcome to campus! please be considerate of your safety as well as others!",
+                      "Welcome to campus! Please be considerate of your safety as well as others!",
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
@@ -87,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                     child: HomePageButton(
                         "On Campus Guidelines",
                         "Please read these listed guidelines before coming on campus.",
-                        null,
+                        '/guidelines',
                         140.0),
                   )
                 ],
