@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'ButtonWidget.dart';
 
 // Checklist page, with check boxes.
 class CheckListPageOne extends StatefulWidget {
@@ -117,8 +118,45 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
                     buildNoSympCheckBox(noSymptoms)                 // no symptoms checkbox
                   ],
                 )
-              )
-            ],
+              ),
+              Container(
+                padding: EdgeInsets.only(bottom: 53, top: 30),
+                alignment: Alignment.topCenter,
+                child: RoundedButtons
+                ('Continue', 
+                18.0, 50.0, 200.0, 
+                FIUNavyBlue,
+                Colors.white, 
+                25.0, 
+                () {
+                  if (noSymptoms.value == false && counter == 0)    // if the user doesn't select any checkbox
+                  {
+                    Widget cancelButton = FlatButton(   // button to exit alert dialog
+                      child: Text("OK"),
+                      onPressed:  () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+
+                    AlertDialog alert = AlertDialog(    // alert dialog for the user
+                      title: Text("No option selected"),
+                      content: Text("You have not selected any of the checkboxes. Please select at least one to continue."),
+                      actions: [
+                        cancelButton
+                      ],
+                    );
+
+                    // show the dialog
+                    showDialog(                         // show the alert dialog to user
+                      context: context,
+                      builder: (BuildContext context) {
+                        return alert;
+                      },
+                    );
+                  }
+                }
+              ),
+            )],
           ),
         ));
   }
@@ -140,7 +178,6 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
           symptoms.forEach((symptom) {
             symptom.value = !setting.value;  // then uncheck every other checkbox
             counter = 0;
-            print(counter.toString());
           });
         } 
 
@@ -163,15 +200,13 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
         setting.value = newValue;           // either checks or unchecks the checkbox
 
         if (!newValue) {                    // unchecks the no symptoms checkbox when a symptom checkbox is checked
-          counter--;
-          print(counter.toString());                  
+          counter--;                
           noSymptoms.value = false;         
         } 
 
         // otherwise, make sure no symptoms checkbox is unchecked when a symptom checkbox is checked
         else {
-          counter++;
-          print(counter.toString());   
+          counter++;  
           final allow = symptoms.every((setting) => setting.value);
           noSymptoms.value = allow;
         }
