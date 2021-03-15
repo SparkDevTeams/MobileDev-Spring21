@@ -1,36 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'ButtonWidget.dart';
 
 // Checklist page, with check boxes.
-class CheckListPageOne extends StatelessWidget {
+class CheckListPageOne extends StatefulWidget {
   @override
+  _CheckListPageOneState createState() => _CheckListPageOneState();
+}
+
+class _CheckListPageOneState extends State<CheckListPageOne> {
+// The first screening checklist page of the FIU P3 App.
+
+  // no symptoms SymptomSetting object for no symptoms checkbox
+
+  final noSymptoms = SymptomSetting(title: 'I am experiencing no symptoms'); 
+
+  // All symptom options as SymptomSetting objects to initialize checkboxes
+
+  final symptoms = [
+    SymptomSetting(title: 'Fever (temperature of 100.4°F or higher) or chills'),
+    SymptomSetting(title: 'Cough'),
+    SymptomSetting(title: 'Shortness of breath / Difficulty breathing'),
+    SymptomSetting(title: 'Fatigue'),
+    SymptomSetting(title: 'Muscle or body aches'),
+    SymptomSetting(title: 'Headaches'),
+    SymptomSetting(title: 'New loss of taste or smell'),
+    SymptomSetting(title: 'Sore throat'),
+    SymptomSetting(title: 'Congestion or runny nose'),
+    SymptomSetting(title: 'Nausea or vomiting'),
+    SymptomSetting(title: 'Diarrhea')
+  ];
+  
+  int counter = 0;    // holds the value of how many of the symptoms checkboxes are checked
+  
   Widget build(BuildContext context) {
+  // The main screening checklist page widget, with all the important
+  // texts and shapes
+  
     const FIUNavyBlue = const Color.fromRGBO(8, 30, 63, 1.0);   // FIU's navy blue color.
-
-    // All checkbox options
-
-    CheckBox fever = CheckBox(title: "Fever (temperature of 100.4°F or higher) or chills");
-    CheckBox cough = CheckBox(title: "Cough");
-    CheckBox breath = CheckBox(title: "Shortness of breath / Difficulty breathing");
-    CheckBox fatigue = CheckBox(title: "Fatigue");
-    CheckBox muscle = CheckBox(title: "Muscle or body aches");
-    CheckBox headaches = CheckBox(title: "Headaches");
-    CheckBox taste = CheckBox(title: "New loss of taste or smell");
-    CheckBox throat = CheckBox(title: "Sore throat");
-    CheckBox nose = CheckBox(title: "Congestion or runny nose");
-    CheckBox nausea = CheckBox(title: "Nausea or vomiting");
-    CheckBox diarrhea = CheckBox(title: "Diarrhea");
-    CheckBox noSymp = CheckBox(title: "I am experiencing no symptoms");
-
-    List options = [fever, cough, breath, fatigue, muscle, headaches, taste, throat, nose, nausea, diarrhea, noSymp];
 
     return Scaffold(
         appBar: AppBar(
           shadowColor: Colors.transparent,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back, color: FIUNavyBlue, size: 35),
-            onPressed: () {  },
+            onPressed: () {  },     // TODO: Go back to homepage functionality
           )
         ),
         body: Padding(
@@ -100,18 +113,8 @@ class CheckListPageOne extends StatelessWidget {
                 width: 315,
                 child: Column(
                   children: <Widget>[
-                    fever,
-                    cough,
-                    breath,
-                    fatigue,
-                    muscle,
-                    headaches,
-                    taste,
-                    throat,
-                    nose,
-                    nausea,
-                    diarrhea,
-                    noSymp,
+                    ...symptoms.map(buildSympCheckBox).toList(),    // create the checkbox widgets
+                    buildNoSympCheckBox(noSymptoms)                 // no symptoms checkbox
                   ],
                 )
               )
@@ -119,43 +122,79 @@ class CheckListPageOne extends StatelessWidget {
           ),
         ));
   }
-}
 
-// Checkbox tile stateful widget
-class CheckBox extends StatefulWidget { 
-  final String title;   // Symptom being experienced
-  bool _value = false;
-  bool greyOut;
+  Widget buildNoSympCheckBox(SymptomSetting setting) => buildCheckBox(
+  // Widget made specifically for the no symptoms checkbox, uses the
+  // buildCheckBox widget, passing to it a SymptomSetting object and the
+  // onClicked function, which holds the state of the checkbox.
 
-  CheckBox({Key key, this.title}) : super(key: key);  // Constructor
+    setting: setting,     // object of SymptomSetting is passed here
+    onClicked: () {       // onClicked function, decides the state of the checkbox
+      final newValue = !setting.value;   
 
-  // Return whether or not check box is checked
-  bool get getValue{
-    return _value;
-  }
+      // Sets the state of the checkboxes, changes them based on what is done
+      // to the no symptoms checkbox.
+      setState(() {
+        if(setting.value = true)             // if the no symptoms checkbox is currently checked...
+        {
+          symptoms.forEach((symptom) {
+            symptom.value = !setting.value;  // then uncheck every other checkbox
+            counter = 0;
+            print(counter.toString());
+          });
+        } 
 
-  set setValue(bool aValue){
-    _value = aValue;
-  }
+        setting.value = newValue;
+      });
+    });
 
-  set setGreyOut(bool aValue){
-    greyOut = aValue;
-  }
-  
-  @override
-  _CheckBoxState createState() => _CheckBoxState();
-}
+  Widget buildSympCheckBox(SymptomSetting setting) => buildCheckBox(
+  // Widget for all the symptoms checkboxes, except the no symptoms checkbox.
+  // This widget also uses the buildCheckBox widget, passing to it a SymptomSetting
+  // object and the onClicked function, which holds the state of the checkbox.
 
-class _CheckBoxState extends State<CheckBox> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: CheckboxListTile(
-        value: widget._value,
+    setting: setting,     // object of SymptomSetting is passed here
+    onClicked: () {       // onClicked function, decides the state of the checkbox
+
+      // Sets the state of the checkboxes, changes them based on what is done
+      // to the any checkbox associated with a symptom.
+      setState(() {
+        final newValue = !setting.value;
+        setting.value = newValue;           // either checks or unchecks the checkbox
+
+        if (!newValue) {                    // unchecks the no symptoms checkbox when a symptom checkbox is checked
+          counter--;
+          print(counter.toString());                  
+          noSymptoms.value = false;         
+        } 
+
+        // otherwise, make sure no symptoms checkbox is unchecked when a symptom checkbox is checked
+        else {
+          counter++;
+          print(counter.toString());   
+          final allow = symptoms.every((setting) => setting.value);
+          noSymptoms.value = allow;
+        }
+      });
+    },
+  );
+
+  Widget buildCheckBox({
+  // Widget for creating a basic checkbox list tile, takes in two parameters:
+
+    @required SymptomSetting setting,   // object of SymptomSetting is passed here (includes title of symptom
+                                        // and value of false for the checkbox)
+
+    @required VoidCallback onClicked,   // here, a function is passed that decides how the state of the
+                                        // checkbox list tile will be set depending on whether the checkbox
+                                        // being made is for a symptom or for the no symptoms checkbox
+  }) =>
+      CheckboxListTile(
+        value: setting.value,   // value of whether or not the checkbox is checked (true for checked, false for unchecked)
         contentPadding: const EdgeInsets.only(right: 10, left: 20),
         controlAffinity: ListTileControlAffinity.platform,
         title: Text(
-          widget.title,
+          setting.title,
           style: TextStyle(
             fontFamily: "Be Vietnam",
             fontSize: 15.0,
@@ -163,13 +202,22 @@ class _CheckBoxState extends State<CheckBox> {
           )
         ),
         activeColor: Color.fromRGBO(8, 30, 63, 1.0),
-        onChanged: (value) {
-          setState(() {
-            widget._value = value;
-          });
-        }
-      )
-    );
-  }
+        onChanged: (value) => (onClicked())   // change state
+      );
+}
+
+class SymptomSetting {
+// A class for creating a symptom that takes in
+// a title of a symptom and also sets the initial
+// value of its checkbox to unchecked (false)
+
+  String title;   // name of the symptom
+  bool value;     // initial value of checkbox of symptom (set to false)
+  int count;      // whether checkbox is checked or unchecked in integer form (1 or 0)
+
+  SymptomSetting({
+    @required this.title, // get name of symptom
+    this.value = false,   // set checkbox to unchecked (false)
+  });
 }
 
