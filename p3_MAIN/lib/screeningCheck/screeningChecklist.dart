@@ -58,18 +58,13 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
             children: <Widget>[
               // "Safety Screening Checklist" text.
               Container(
-                  padding:
-                      EdgeInsets.only(top: 20), // Position of text on page.
-                  alignment: Alignment.topCenter,
-                  child: SizedBox(
+                padding: EdgeInsets.only(top: 20), // Position of text on page.
+                alignment: Alignment.topCenter,
+                child: SizedBox(
                     width: 315,
                     child: Text('Safety Screening Checklist',
-                        style: TextStyle(
-                          color: AppTheme.Colors.blueFIU,
-                          fontSize: 39,
-                          fontWeight: FontWeight.w800,
-                        )),
-                  )),
+                        style: Theme.of(context).textTheme.headline1)),
+              ),
               Container(
                 padding: EdgeInsets.only(
                     top:
@@ -91,7 +86,7 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
                         child: RichText(
                             text: TextSpan(
                           style: TextStyle(
-                              fontSize: 14.0,
+                              fontSize: 15.0,
                               color: Colors.white,
                               fontWeight: FontWeight.normal),
                           children: <TextSpan>[
@@ -102,12 +97,15 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
                             TextSpan(
                                 text: 'that are new or unusual for you?',
                                 style: TextStyle(
-                                    fontSize: 14.0,
+                                    fontSize: 15.0,
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600)),
                             TextSpan(
-                              text: ' Select all that apply:',
-                            )
+                                text: ' Select all that apply:',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Colors.white,
+                                ))
                           ],
                         ))),
                   ),

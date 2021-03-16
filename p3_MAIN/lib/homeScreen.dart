@@ -70,9 +70,9 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 15),
                     child: HomePageButton(
                         "Exposure Notifications",
-                        "Tap here to view your history of exposures of COVID-19 or submit a positive test alert.",
+                        "View your history of exposures of COVID-19 or submit a positive test alert.",
                         null,
-                        140.0),
+                        150.0),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                         "COVID-19 Resources",
                         "Do you need resources to assist you during this time? Click here.",
                         '/resources',
-                        140.0),
+                        150.0),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
@@ -88,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                         "On Campus Guidelines",
                         "Please read these listed guidelines before coming on campus.",
                         '/guidelines',
-                        140.0),
+                        150.0),
                   ),
                   SizedBox(
                     height: 50,
