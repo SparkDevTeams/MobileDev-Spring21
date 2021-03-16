@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:p3_MAIN/UIWidgets/ButtonWidgets.dart';
+import 'package:p3_MAIN/theme/themeData.dart';
 
 class ResourcesPage extends StatelessWidget {
   _launchURL(website) async {
@@ -68,6 +69,13 @@ class ResourcesPage extends StatelessWidget {
       appBar: AppBar(
         shadowColor: Colors.transparent,
         backgroundColor: Colors.transparent,
+        leading: IconButton(
+          icon:
+              Icon(Icons.arrow_back, color: AppTheme.Colors.blueFIU, size: 35),
+          onPressed: () {
+            Navigator.pop(context);
+          }, // TODO: Go back to homepage functionality
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -168,27 +176,6 @@ class ResourcesPage extends StatelessWidget {
                 () => _launchURL('7'),
               )),
               Container(padding: const EdgeInsets.only(top: 25, bottom: 25)),
-              Container(
-                alignment: Alignment.center,
-                child: Container(
-                  height: 50.0,
-                  width: 200.0,
-                  child: RaisedButton(
-                    //color: Colors.white,
-                    textColor: Color.fromRGBO(8, 30, 63, 1.0),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      "Back",
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                  ),
-                ),
-              ),
             ], crossAxisAlignment: CrossAxisAlignment.start),
           ),
         ),

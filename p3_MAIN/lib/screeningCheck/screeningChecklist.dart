@@ -10,68 +10,36 @@ class CheckListPageOne extends StatefulWidget {
 }
 
 class _CheckListPageOneState extends State<CheckListPageOne> {
-  int initialValue = 0;
+// The first screening checklist page of the FIU P3 App.
 
-  @override
+  // no symptoms SymptomSetting object for no symptoms checkbox
+
+  final noSymptoms = SymptomSetting(title: 'I am experiencing no symptoms');
+
+  // All symptom options as SymptomSetting objects to initialize checkboxes
+
+  final symptoms = [
+    SymptomSetting(
+        title: 'Fever (temperature of 100.4°F or higher) or chills.'),
+    SymptomSetting(title: 'Cough'),
+    SymptomSetting(title: 'Shortness of breath / Difficulty breathing.'),
+    SymptomSetting(title: 'Fatigue'),
+    SymptomSetting(title: 'Muscle or body aches'),
+    SymptomSetting(title: 'Headaches'),
+    SymptomSetting(title: 'New loss of taste or smell'),
+    SymptomSetting(title: 'Sore throat'),
+    SymptomSetting(title: 'Congestion or runny nose'),
+    SymptomSetting(title: 'Nausea or vomiting'),
+    SymptomSetting(title: 'Diarrhea')
+  ];
+
+  int counter =
+      0; // holds the value of how many of the symptoms checkboxes are checked
+
   Widget build(BuildContext context) {
-    // Let false be the initial value
-
-    void nullreturn() {
-      return null;
-    }
-
-    CheckBox fever = CheckBox(
-      title: "Fever (temperature of 100.4°F or higher) or chills",
-      value: true,
-      funct: nullreturn,
-    );
-    CheckBox cough = CheckBox(
-        title: "Cough",
-        value: false,
-        funct: () {
-          initialValue++;
-        });
-    CheckBox breath = CheckBox(
-        title: "Shortness of breath / Difficulty breathing",
-        value: false,
-        funct: nullreturn);
-    CheckBox fatigue =
-        CheckBox(title: "Fatigue", value: false, funct: nullreturn);
-    CheckBox muscle = CheckBox(
-        title: "Muscle or body aches", value: false, funct: nullreturn);
-    CheckBox headaches =
-        CheckBox(title: "Headaches", value: false, funct: nullreturn);
-    CheckBox taste = CheckBox(
-        title: "New loss of taste or smell", value: false, funct: nullreturn);
-    CheckBox throat =
-        CheckBox(title: "Sore throat", value: false, funct: nullreturn);
-    CheckBox nose = CheckBox(
-        title: "Congestion or runny nose", value: false, funct: nullreturn);
-    CheckBox nausea =
-        CheckBox(title: "Nausea or vomiting", value: false, funct: nullreturn);
-    CheckBox diarrhea =
-        CheckBox(title: "Diarrhea", value: false, funct: nullreturn);
-    CheckBox noSymp = CheckBox(
-        title: "I am experiencing no symptoms",
-        value: false,
-        funct: () {
-          setState(() {});
-        });
-
-    List options = [
-      fever,
-      cough,
-      breath,
-      fatigue,
-      muscle,
-      headaches,
-      taste,
-      throat,
-      nose,
-      nausea,
-      diarrhea,
-      noSymp
-    ];
+    // The main screening checklist page widget, with all the important
+    // texts and shapes
+    // FIU's navy blue color.
 
     return Scaffold(
         appBar: AppBar(
@@ -82,125 +50,225 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
                   color: AppTheme.Colors.blueFIU, size: 35),
               onPressed: () {
                 Navigator.pop(context);
-              },
+              }, // TODO: Go back to homepage functionality
             )),
         body: Padding(
-          padding: const EdgeInsets.only(right: 25, left: 25),
+          padding: const EdgeInsets.only(right: 20, left: 20),
           child: ListView(
             children: <Widget>[
               // "Safety Screening Checklist" text.
               Container(
-                  // Position of text on page.
+                  padding:
+                      EdgeInsets.only(top: 20), // Position of text on page.
                   alignment: Alignment.topCenter,
                   child: SizedBox(
                     width: 315,
                     child: Text('Safety Screening Checklist',
                         style: TextStyle(
                           color: AppTheme.Colors.blueFIU,
-                          fontSize: 32,
+                          fontSize: 39,
                           fontWeight: FontWeight.w800,
                         )),
                   )),
               Container(
                 padding: EdgeInsets.only(
                     top:
-                        10), // Position of both the box and the text within it on page.
+                        30), // Position of both the box and the text within it on page.
                 alignment: Alignment.topCenter,
                 child: Container(
-                  height: 120,
-                  width: 400,
+                  height: 152.0,
+                  width: 315.0,
                   decoration: BoxDecoration(
                       // The edged box itself.
                       color: AppTheme.Colors.blueFIU,
                       borderRadius: BorderRadius.all(Radius.circular(30))),
                   // To hold text within the box.
                   child: Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Container(
-                        width: 400,
+                    padding: const EdgeInsets.all(25.0),
+                    child: Container(
+                        width: 315,
                         alignment: Alignment.center,
-                        child: Text(
-                          "In the past 48 hours, did have any of these following COVID-19 symptoms listed below that are new or unusual for you? Select all that apply:",
-                          style:
-                              new TextStyle(color: Colors.white, fontSize: 16),
-                        ),
-                      )),
+                        child: RichText(
+                            text: TextSpan(
+                          style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal),
+                          children: <TextSpan>[
+                            TextSpan(
+                              text:
+                                  'Do you currently have or did you have in the past 48 hours any of the following COVID-19 symptoms listed below ',
+                            ),
+                            TextSpan(
+                                text: 'that are new or unusual for you?',
+                                style: TextStyle(
+                                    fontSize: 14.0,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600)),
+                            TextSpan(
+                              text: ' Select all that apply:',
+                            )
+                          ],
+                        ))),
+                  ),
                 ),
               ),
               Container(
-                  padding: EdgeInsets.only(top: 10),
+                  padding: EdgeInsets.only(top: 20),
                   alignment: Alignment.topCenter,
                   width: 315,
                   child: Column(
                     children: <Widget>[
-                      fever,
-                      cough,
-                      breath,
-                      fatigue,
-                      muscle,
-                      headaches,
-                      taste,
-                      throat,
-                      nose,
-                      nausea,
-                      diarrhea,
-                      noSymp,
+                      ...symptoms
+                          .map(buildSympCheckBox)
+                          .toList(), // create the checkbox widgets
+                      buildNoSympCheckBox(noSymptoms) // no symptoms checkbox
                     ],
-                  ))
+                  )),
+              Container(
+                padding: EdgeInsets.only(bottom: 53, top: 30),
+                alignment: Alignment.topCenter,
+                child: RoundedButtons('Continue', 18.0, 50.0, 200.0,
+                    AppTheme.Colors.blueFIU, Colors.white, 25.0, () {
+                  if (noSymptoms.value == false &&
+                      counter == 0) // if the user doesn't select any checkbox
+                  {
+                    Widget cancelButton = FlatButton(
+                      // button to exit alert dialog
+                      child: Text("OK"),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+
+                    AlertDialog alert = AlertDialog(
+                      // alert dialog for the user
+                      title: Text(
+                        "No option selected",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      content: Text(
+                        "You have not selected any of the checkboxes. Please select at least one to continue.",
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                      actions: [cancelButton],
+                    );
+
+                    // show the dialog
+                    showDialog(
+                      // show the alert dialog to user
+                      context: context,
+                      builder: (BuildContext context) {
+                        return alert;
+                      },
+                    );
+                  }
+                }),
+              )
             ],
           ),
         ));
   }
+
+  Widget buildNoSympCheckBox(SymptomSetting setting) => buildCheckBox(
+      // Widget made specifically for the no symptoms checkbox, uses the
+      // buildCheckBox widget, passing to it a SymptomSetting object and the
+      // onClicked function, which holds the state of the checkbox.
+
+      setting: setting, // object of SymptomSetting is passed here
+      onClicked: () {
+        // onClicked function, decides the state of the checkbox
+        final newValue = !setting.value;
+
+        // Sets the state of the checkboxes, changes them based on what is done
+        // to the no symptoms checkbox.
+        setState(() {
+          if (setting.value =
+              true) // if the no symptoms checkbox is currently checked...
+          {
+            symptoms.forEach((symptom) {
+              symptom.value =
+                  !setting.value; // then uncheck every other checkbox
+              counter = 0;
+            });
+          }
+
+          setting.value = newValue;
+        });
+      });
+
+  Widget buildSympCheckBox(SymptomSetting setting) => buildCheckBox(
+        // Widget for all the symptoms checkboxes, except the no symptoms checkbox.
+        // This widget also uses the buildCheckBox widget, passing to it a SymptomSetting
+        // object and the onClicked function, which holds the state of the checkbox.
+
+        setting: setting, // object of SymptomSetting is passed here
+        onClicked: () {
+          // onClicked function, decides the state of the checkbox
+
+          // Sets the state of the checkboxes, changes them based on what is done
+          // to the any checkbox associated with a symptom.
+          setState(() {
+            final newValue = !setting.value;
+            setting.value = newValue; // either checks or unchecks the checkbox
+
+            if (!newValue) {
+              // unchecks the no symptoms checkbox when a symptom checkbox is checked
+              counter--;
+              noSymptoms.value = false;
+            }
+
+            // otherwise, make sure no symptoms checkbox is unchecked when a symptom checkbox is checked
+            else {
+              counter++;
+              final allow = symptoms.every((setting) => setting.value);
+              noSymptoms.value = allow;
+            }
+          });
+        },
+      );
+
+  Widget buildCheckBox({
+    // Widget for creating a basic checkbox list tile, takes in two parameters:
+
+    @required
+        SymptomSetting
+            setting, // object of SymptomSetting is passed here (includes title of symptom
+    // and value of false for the checkbox)
+
+    @required
+        VoidCallback
+            onClicked, // here, a function is passed that decides how the state of the
+    // checkbox list tile will be set depending on whether the checkbox
+    // being made is for a symptom or for the no symptoms checkbox
+  }) =>
+      CheckboxListTile(
+          value: setting.value,
+          // value of whether or not the checkbox is checked (true for checked, false for unchecked)
+          contentPadding: const EdgeInsets.only(right: 10, left: 20),
+          controlAffinity: ListTileControlAffinity.platform,
+          title: Text(setting.title,
+              style: TextStyle(
+                fontFamily: "Be Vietnam",
+                fontSize: 15.0,
+                fontWeight: FontWeight.normal,
+              )),
+          activeColor: Color.fromRGBO(8, 30, 63, 1.0),
+          onChanged: (value) => (onClicked()) // change state
+          );
 }
 
-// Checkbox tile stateful widget
-class CheckBox extends StatefulWidget {
-  final String title; // Symptom being experienced
-  bool value;
-  Function funct;
+class SymptomSetting {
+// A class for creating a symptom that takes in
+// a title of a symptom and also sets the initial
+// value of its checkbox to unchecked (false)
 
-  CheckBox({this.title, this.value, this.funct}); // Constructor
+  String title; // name of the symptom
+  bool value; // initial value of checkbox of symptom (set to false)
+  int count; // whether checkbox is checked or unchecked in integer form (1 or 0)
 
-  // Return whether or not check box is checked
-  bool get getValue {
-    return value;
-  }
-
-  set setValue(bool aValue) {
-    value = aValue;
-  }
-
-  @override
-  _CheckBoxState createState() => _CheckBoxState();
+  SymptomSetting({
+    @required this.title, // get name of symptom
+    this.value = false, // set checkbox to unchecked (false)
+  });
 }
-
-class _CheckBoxState extends State<CheckBox> {
-  int _counter = 0;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: CheckboxListTile(
-            value: widget.value,
-            //contentPadding: const EdgeInsets.only(right: 10, left: 20),
-            controlAffinity: ListTileControlAffinity.platform,
-            title: Text(widget.title,
-                style: Theme.of(context).textTheme.bodyText2),
-            activeColor: Color.fromRGBO(8, 30, 63, 1.0),
-            onChanged: (value) {
-              setState(() {
-                widget.value = !widget.value;
-                if (widget.value == true) {
-                  _counter++;
-                  print(widget.title + ": " + _counter.toString());
-                  return _counter;
-                } else if (widget.value == false) {
-                  _counter--;
-                  print(widget.title + ": " + _counter.toString());
-                  return _counter;
-                }
-              });
-            }));
-  }
-}
-
-//int returnNumber() {}

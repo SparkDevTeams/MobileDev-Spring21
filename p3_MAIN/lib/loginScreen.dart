@@ -24,127 +24,129 @@ class _LoginScreenState extends State<LoginScreen> {
         shadowColor: Colors.transparent,
         iconTheme: IconThemeData(color: AppTheme.Colors.blueFIU),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 25, right: 25),
-            child: Form(
-              key: _formkey,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/loginLogoV1.png',
-                      width: 300,
-                      scale: 1.5,
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Text(
-                      "Sign In:",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.normal,
-                          color: AppTheme.Colors.blueFIU),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-                      validator: (input) {
-                        if (input.isEmpty) {
-                          return "Please enter a valid ID";
-                        }
-                      },
-                      onSaved: (input) => _pantherid = input,
-                      // USERNAME
-                      decoration: InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.person,
-                            color: Colors.grey,
-                          ),
-                          hintText: "Panther ID",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              color: AppTheme.Colors.brightGoldFIU,
-                            ),
-                          )),
-                    ),
-                    SizedBox(
-                      // Spacing between widgets
-                      height: 10,
-                    ),
-                    TextFormField(
+      body: Center(
+        child: SingleChildScrollView(
+          child: Container(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 25, right: 25),
+              child: Form(
+                key: _formkey,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/loginLogoV1.png',
+                        width: 300,
+                        scale: 1.5,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Text(
+                        "Sign In:",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.normal,
+                            color: AppTheme.Colors.blueFIU),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
                         validator: (input) {
                           if (input.isEmpty) {
-                            return "Please re-enter your password.";
+                            return "Please enter a valid ID";
                           }
                         },
-                        onSaved: (input) => _password = input,
-                        // PASSWORD
-                        obscureText: true,
+                        onSaved: (input) => _pantherid = input,
+                        // USERNAME
                         decoration: InputDecoration(
                             prefixIcon: Icon(
-                              Icons.lock,
+                              Icons.person,
                               color: Colors.grey,
                             ),
-                            hintText: "Password",
+                            hintText: "Panther ID",
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
                               borderSide: BorderSide(
                                 color: AppTheme.Colors.brightGoldFIU,
                               ),
-                            ))),
-                    SizedBox(
-                      // Spacing between widgets
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      width: 150,
-                      child: RaisedButton(
-                        color: AppTheme.Colors.brightGoldFIU,
-                        child: Text(
-                          "Log in",
-                          style: TextStyle(
-                              fontSize: 20, color: AppTheme.Colors.blueFIU),
-                        ),
-                        onPressed: signIn,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
+                            )),
                       ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Container(
-                      height: 50,
-                      width: 150,
-                      child: RaisedButton(
-                        color: Colors.grey,
-                        child: Text(
-                          "Register",
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/registerPage');
-                        },
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20)),
+                      SizedBox(
+                        // Spacing between widgets
+                        height: 10,
                       ),
-                    )
-                  ],
+                      TextFormField(
+                          validator: (input) {
+                            if (input.isEmpty) {
+                              return "Please re-enter your password.";
+                            }
+                          },
+                          onSaved: (input) => _password = input,
+                          // PASSWORD
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              prefixIcon: Icon(
+                                Icons.lock,
+                                color: Colors.grey,
+                              ),
+                              hintText: "Password",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                                borderSide: BorderSide(
+                                  color: AppTheme.Colors.brightGoldFIU,
+                                ),
+                              ))),
+                      SizedBox(
+                        // Spacing between widgets
+                        height: 20,
+                      ),
+                      Container(
+                        height: 50,
+                        width: 150,
+                        child: RaisedButton(
+                          color: AppTheme.Colors.brightGoldFIU,
+                          child: Text(
+                            "Log in",
+                            style: TextStyle(
+                                fontSize: 20, color: AppTheme.Colors.blueFIU),
+                          ),
+                          onPressed: signIn,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                        height: 50,
+                        width: 150,
+                        child: RaisedButton(
+                          color: Colors.grey,
+                          child: Text(
+                            "Register",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/registerPage');
+                          },
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

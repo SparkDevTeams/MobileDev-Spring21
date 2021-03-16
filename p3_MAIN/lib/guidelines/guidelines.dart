@@ -11,6 +11,13 @@ class Guidelines extends StatelessWidget {
       appBar: AppBar(
         shadowColor: Colors.transparent,
         backgroundColor: Colors.transparent,
+        leading: IconButton(
+          icon:
+              Icon(Icons.arrow_back, color: AppTheme.Colors.blueFIU, size: 35),
+          onPressed: () {
+            Navigator.pop(context);
+          }, // TODO: Go back to homepage functionality
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -83,27 +90,6 @@ class Guidelines extends StatelessWidget {
                     Alignment.center),
               ),
               Container(padding: const EdgeInsets.only(top: 25, bottom: 25)),
-              Container(
-                alignment: Alignment.center,
-                child: Container(
-                  height: 50.0,
-                  width: 200.0,
-                  child: RaisedButton(
-                    //color: Colors.white,
-                    textColor: AppTheme.Colors.blueFIU,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      "Back",
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
-                    ),
-                  ),
-                ),
-              ),
             ], crossAxisAlignment: CrossAxisAlignment.start),
           ),
         ),

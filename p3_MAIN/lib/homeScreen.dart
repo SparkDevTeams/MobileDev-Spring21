@@ -89,6 +89,9 @@ class HomeScreen extends StatelessWidget {
                         "Please read these listed guidelines before coming on campus.",
                         '/guidelines',
                         140.0),
+                  ),
+                  SizedBox(
+                    height: 50,
                   )
                 ],
               ),
