@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "Welcome to FIU!",
+                      "Hello, $name",
                       style: Theme.of(context).textTheme.headline1,
                     ),
                   ),
@@ -165,3 +165,5 @@ class HomePageButton extends StatelessWidget {
     );
   }
 }
+
+// TODO: We need to pass Exposure ID into exposure notifications.

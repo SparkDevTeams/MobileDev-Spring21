@@ -166,10 +166,18 @@ class _LoginScreenState extends State<LoginScreen> {
             .user;
         print(user.uid);
         await DatabaseService(authID: user.uid);
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => HomeScreen(name: "name")));
+        FirebaseFirestore.instance
+            .collection("user_info")
+            .doc(user.uid)
+            .get()
+            .then((value) {
+          print(value.data()["first_name"]);
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      HomeScreen(name: value.data()["first_name"])));
+        });
       } catch (e) {
         print(e.message);
       }
@@ -178,3 +186,5 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 }
+
+// TODO: we need to also return the exposure ID code to the homescreen
