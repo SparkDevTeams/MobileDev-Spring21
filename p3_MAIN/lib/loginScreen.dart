@@ -166,7 +166,10 @@ class _LoginScreenState extends State<LoginScreen> {
             .user;
         print(user.uid);
         await DatabaseService(authID: user.uid);
-        Navigator.pushReplacementNamed(context, '/home');
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (BuildContext context) => HomeScreen(name: "name")));
       } catch (e) {
         print(e.message);
       }
