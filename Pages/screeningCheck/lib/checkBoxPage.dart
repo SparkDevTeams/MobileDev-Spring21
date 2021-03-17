@@ -154,6 +154,14 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
                       },
                     );
                   }
+                  
+                  else
+                  {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CheckListPageTwo(counter: counter)),
+                    );
+                  }
                 }
               ),
             )],
@@ -166,8 +174,8 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
   // buildCheckBox widget, passing to it a SymptomSetting object and the
   // onClicked function, which holds the state of the checkbox.
 
-    setting: setting,     // object of SymptomSetting is passed here
-    onClicked: () {       // onClicked function, decides the state of the checkbox
+    setting: setting,                        // object of SymptomSetting is passed here
+    onClicked: () {                          // onClicked function, decides the state of the checkbox
       final newValue = !setting.value;   
 
       // Sets the state of the checkboxes, changes them based on what is done
@@ -248,7 +256,6 @@ class SymptomSetting {
 
   String title;   // name of the symptom
   bool value;     // initial value of checkbox of symptom (set to false)
-  int count;      // whether checkbox is checked or unchecked in integer form (1 or 0)
 
   SymptomSetting({
     @required this.title, // get name of symptom
@@ -256,3 +263,373 @@ class SymptomSetting {
   });
 }
 
+// FIRST SCREENING CHECKLIST PAGE ENDS HERE
+
+class CheckListPageTwo extends StatefulWidget {
+  @override
+  _CheckListPageTwoState createState() => _CheckListPageTwoState();
+
+  final int counter;  // Counter for the screening checklist score from the first page
+
+  const CheckListPageTwo({ Key key, this.counter }) : super(key: key);
+}
+
+class _CheckListPageTwoState extends State<CheckListPageTwo> {
+// The second screening checklist page of the FIU P3 App.
+
+final FIUNavyBlue = const Color.fromRGBO(8, 30, 63, 1.0);   // FIU's navy blue color.
+final FIUMagenta = const Color.fromRGBO(204, 0, 102, 1.0);  // FIU's magenta color.
+int counterTwo = 0;                                         // counts score from this page
+
+final options1 = [                                          // yes and no options for first question
+  ButtonSetting(
+    height: 50.0, 
+    width: 135, 
+    colorBackground: Colors.white, 
+    id: 1, 
+    colorText: const Color.fromRGBO(8, 30, 63, 1.0), 
+    text: 'Yes'
+  ),
+  ButtonSetting(
+    height: 50.0, 
+    width: 135, 
+    colorBackground: Colors.white, 
+    id: 1, 
+    colorText: const Color.fromRGBO(8, 30, 63, 1.0), 
+    text: 'No'
+  ),
+];
+
+final options2 = [                                          // yes and no options for second question
+  ButtonSetting(
+    height: 50.0, 
+    width: 135, 
+    colorBackground: Colors.white, 
+    id: 2, 
+    colorText: const Color.fromRGBO(8, 30, 63, 1.0), 
+    text: 'Yes'
+  ),
+  ButtonSetting(
+    height: 50.0, 
+    width: 135, 
+    colorBackground: Colors.white, 
+    id: 2, 
+    colorText: const Color.fromRGBO(8, 30, 63, 1.0), 
+    text: 'No'
+  ),
+];
+
+  @override
+   Widget build(BuildContext context) {
+  // The main screening checklist second page widget, with all the important
+  // texts and shapes
+
+  const FIUNavyBlue = const Color.fromRGBO(8, 30, 63, 1.0);   // FIU's navy blue color.
+
+    return Scaffold(
+        appBar: AppBar(
+          shadowColor: Colors.transparent,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: FIUNavyBlue, size: 35),
+            onPressed: () {
+              Navigator.pop(context);
+             },     
+          )
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(right: 20, left: 20),
+          child: ListView(
+            children: <Widget>[
+               // "Safety Screening Checklist" text.
+              Container(
+                  padding: EdgeInsets.only(top: 20),    // Position of text on page.
+                  alignment: Alignment.topCenter,
+                  child: SizedBox(
+                    width: 315,
+                    child: Text('Safety Screening Checklist',
+                        style: TextStyle(
+                          color: FIUNavyBlue,
+                          fontFamily: "Be Vietnam",
+                          fontSize: 39,
+                          fontWeight: FontWeight.w800,
+                        )),
+                  )),
+                  // First question textbox
+                  Container(
+                    padding: EdgeInsets.only(top: 30),    // Position of both the first question box and the text within it on page.
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      height: 130.0,
+                      width: 315.0,
+                      decoration: BoxDecoration(    // The edged box itself.
+                          color: FIUNavyBlue,
+                          borderRadius: BorderRadius.all(Radius.circular(30))),
+                    // To hold text within the box.
+                    child: Padding(  
+                      padding: const EdgeInsets.all(25.0),
+                      child: Container(
+                        width: 315,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Have you been in contact with anyone diagnosed with, or displaying symptoms of, COVID-19 within the last 14 days?',
+                            style: TextStyle(
+                              fontFamily: "Be Vietnam",
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.normal,
+                              color: Colors.white
+                            )
+                          )
+                        ),
+                    ),
+                  ),
+              ),
+              // Yes and no buttons for first question
+              Container(
+                alignment: Alignment.topCenter,
+                padding: EdgeInsets.only(top: 25, right: 20, left: 20),
+                width: 315,
+                height: 100,
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(right: 42),
+                      child: buildYesButton(options1[0])
+                    ),
+                    Container(
+                      child: buildNoButton(options1[1])
+                    ),
+                  ],
+                )
+              ),
+              // Second question textbox
+              Container(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  height: 91.0,
+                  width: 315.0,
+                  decoration: BoxDecoration(    // The edged box itself.
+                    color: FIUNavyBlue,
+                    borderRadius: BorderRadius.all(Radius.circular(30))),
+                    // To hold text within the box.
+                    child: Padding(  
+                      padding: const EdgeInsets.all(25.0),
+                      child: Container(
+                        width: 315,
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Within the last 14 days, have you tested positive for COVID-19?',
+                          style: TextStyle(
+                            fontFamily: "Be Vietnam",
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.white
+                          )
+                        )
+                      ),
+                    ),
+                  ),
+              ),
+              // Yes and no buttons for second question
+              Container(
+                alignment: Alignment.topCenter,
+                padding: EdgeInsets.only(top: 25, right: 20, left: 20),
+                width: 315,
+                height: 100,
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.only(right: 42),
+                      child: buildYesButton(options2[0])
+                    ),
+                    Container(
+                      child: buildNoButton(options2[1])
+                    ),
+                  ],
+                )
+              ),
+              Container(                            // TODO: Find a way to get dotted border
+                alignment: Alignment.topCenter,
+                child: Container(
+                  height: 150.0,
+                  width: 315.0,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: FIUMagenta, width: 2),
+                      borderRadius: BorderRadius.all(Radius.circular(25.0))
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: Text(
+                      "By submitting this screening, I affirm and attest that all the information and answers to screening questions herein are complete, true and correct to the best of my knowledge.",
+                      style: TextStyle(fontSize: 14.0, color: FIUNavyBlue),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          )
+        )
+    );
+  }
+
+  Widget buildNoButton(ButtonSetting setting) => buildToggleButton(
+  // Widget for 'no' buttons
+
+    setting: setting, 
+    onClicked: () {
+      setState(() {
+        // If branch for the first question
+        if (setting.id == 1)
+        {
+          setting.colorText = Colors.white;
+          setting.colorBackground = FIUNavyBlue;
+          setting.value = true;
+          if (counterTwo - 1 >= 0){    // if else statements to prevent counterTwo value of less than 0
+            counterTwo--;
+          }
+          else {
+            counterTwo = 0;
+          }
+
+          options1[0].value = false;
+          options1[0].colorText = FIUNavyBlue;
+          options1[0].colorBackground = Colors.white;
+        }
+        
+        // Else branch for the second question
+        else
+        {
+          setting.colorText = Colors.white;
+          setting.colorBackground = FIUNavyBlue;
+          setting.value = true;
+          if (counterTwo - 1 >= 0){    // if else statements to prevent counterTwo value of less than 0
+            counterTwo--;
+          }
+          else {
+            counterTwo = 0;
+          }
+
+          options2[0].value = false;
+          options2[0].colorText = FIUNavyBlue;
+          options2[0].colorBackground = Colors.white;
+        }
+      });
+    }
+  );
+
+  Widget buildYesButton(ButtonSetting setting) => buildToggleButton(
+  // Widget for 'yes' buttons
+
+    setting: setting, 
+    onClicked: () {
+      setState(() {
+        // If branch for the first question
+        if (setting.id == 1)
+        {
+          setting.colorText = Colors.white;
+          setting.colorBackground = FIUNavyBlue;
+          setting.value = true;
+          if (counterTwo + 1 <= 2){    // if else statements to prevent counterTwo value of more than 2
+            counterTwo++;
+          }
+          else {
+            counterTwo = 2;
+          }
+
+          options1[1].value = false;
+          options1[1].colorText = FIUNavyBlue;
+          options1[1].colorBackground = Colors.white;
+        }
+        
+        // Else branch for the second question
+        else
+        {
+          setting.colorText = Colors.white;
+          setting.colorBackground = FIUNavyBlue;
+          setting.value = true;
+          if (counterTwo + 1 <= 2){    // if else statements to prevent counterTwo value of more than 2
+            counterTwo++;
+          }
+          else {
+            counterTwo = 2;
+          }
+
+          options2[1].value = false;
+          options2[1].colorText = FIUNavyBlue;
+          options2[1].colorBackground = Colors.white;
+        }
+      });
+    }
+  );
+  
+  Widget buildToggleButton({
+  // The actual yes / no button widget, takes properties from ButtonSetting class
+
+    @required ButtonSetting setting,    // object of button setting passed here, contains properties for widget
+
+    @required VoidCallback onClicked    // here, a function is passed that decides how the state of the
+                                        // yes / no button will be set depending on whether the button
+                                        // being made is selected or deselected
+  }) => 
+    Container(
+      height: setting.height,
+      width: setting.width,
+      child: DecoratedBox(                                           // class for filling in the button when clicked with color
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(25.0)), 
+          color: setting.colorBackground                             // set background color for button
+        ),
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            buttonTheme: ButtonTheme.of(context).copyWith(
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap)),
+          child: OutlineButton(
+            textColor: setting.colorText,                           // set the color of the text in the button
+            highlightElevation: 0,
+            child: Container(
+              alignment: Alignment(0.0, -0.2),
+              child: Text(
+                "${setting.text}",
+                style: new TextStyle(fontSize: setting.fontSize,    // set size of the text
+                fontFamily: "Be Vietnam"),
+              ),
+            ),
+            highlightedBorderColor: setting.colorBorder,
+            borderSide: BorderSide(color: setting.colorBorder, width: 2),
+            shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(setting.circularRadius),    // set roundness of button
+            ),
+            onPressed: () => onClicked(),
+          ),
+        ),
+      ),
+    );
+}
+
+class ButtonSetting {
+// A class for creating a yes / no button's properties
+
+  String text;              // yes or no
+  bool value;               // initial value of button (set to false)
+  double height;            // height of button
+  double width;             // width of button
+  Color colorBackground;    // background color of button
+  Color colorText;          // color of text
+  Color colorBorder;        // color of button's border
+  double circularRadius;    // roundness of butoon
+  double fontSize;          // size of font
+  int id;                   // ID of button, determines whether its for first or second question
+
+  ButtonSetting({
+    @required this.id,
+    @required this.text,   
+    @required this.height,
+    @required this.width,
+    @required this.colorBackground,
+    @required this.colorText,
+    this.colorBorder = const Color.fromRGBO(8, 30, 63, 1.0),
+    this.circularRadius = 25.0,
+    this.fontSize = 18.0,
+    this.value = false,     
+  });
+}
