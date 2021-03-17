@@ -85,3 +85,67 @@ class RoundedBox extends StatelessWidget {
     );
   }
 }
+
+class RoundedButtonsOutlined extends StatefulWidget {
+  // This is a rounded button stateless widget.
+  // This takes in 8 arguements in the constructor.
+  // you can find out what it takes as arguements by
+  // reading the code.
+
+  final text,
+      height,
+      width,
+      colorBackground,
+      colorText,
+      colorBorder,
+      circularRadius,
+      fontsize;
+  final Function buttonFunction;
+
+  // Below is the contructor. Constructors in Dart are named after
+  // the parent class
+  // NOTE for any number here, it takes DOUBLES not integers.
+  RoundedButtonsOutlined(
+      this.text,
+      this.fontsize,
+      this.height,
+      this.width,
+      this.colorBackground,
+      this.colorText,
+      this.colorBorder,
+      this.circularRadius,
+      this.buttonFunction
+    );
+
+  @override
+  _RoundedButtonsOutlinedState createState() => _RoundedButtonsOutlinedState();
+}
+
+class _RoundedButtonsOutlinedState extends State<RoundedButtonsOutlined> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: widget.height,
+      width: widget.width,
+      child: OutlineButton(
+        textColor: widget.colorText,
+        color: widget.colorBackground,
+        highlightElevation: 0,
+        child: Container(
+          alignment: Alignment(0.0, -0.2),
+          child: Text(
+            "${widget.text}",
+            style: new TextStyle(fontSize: widget.fontsize,
+            fontFamily: "Be Vietnam"),
+          ),
+        ),
+        onPressed: widget.buttonFunction,
+        highlightedBorderColor: widget.colorBorder,
+        borderSide: BorderSide(color: widget.colorBorder, width: 2),
+        shape: new RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(widget.circularRadius),
+        ),
+      ),
+    );
+  }
+}
