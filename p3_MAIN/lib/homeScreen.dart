@@ -154,14 +154,19 @@ class HomePageButton extends StatelessWidget {
                           fontSize: 13,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
             Container(
               alignment: Alignment.centerLeft,
-              child: Padding(padding: const EdgeInsets.all(8.0), child: null),
+              child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.ac_unit,
+                    size: 1.0,
+                  )),
               // TODO: Import image assets for each icon...
             ),
           ],
