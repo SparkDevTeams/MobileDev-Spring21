@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:p3_MAIN/loginScreen.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -32,7 +34,9 @@ class SettingsPage extends StatelessWidget {
             RaisedButton(
                 child: Text("Test Signout Button"),
                 onPressed: () {
-                  Navigator.popAndPushNamed(context, '/login');
+                  signOUt();
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/login', (route) => false);
                 }),
           ],
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,4 +44,8 @@ class SettingsPage extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> signOUt() async {
+  await FirebaseAuth.instance.signOut();
 }
