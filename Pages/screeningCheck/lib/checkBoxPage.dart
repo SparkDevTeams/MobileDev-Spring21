@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:dotted_border/dotted_border.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'resultsPageAUTHORIZED.dart';
+import 'resultsPageUNAUTHORIZED.dart';
 import 'ButtonWidget.dart';
 
 // Checklist page, with check boxes.
@@ -319,6 +323,8 @@ final options2 = [                                          // yes and no option
   ),
 ];
 
+AgreeSetting agreeButton = new AgreeSetting();
+
   @override
    Widget build(BuildContext context) {
   // The main screening checklist second page widget, with all the important
@@ -447,25 +453,174 @@ final options2 = [                                          // yes and no option
                   ],
                 )
               ),
-              Container(                            // TODO: Find a way to get dotted border
+              // Pink dotted border with text, includes an agreement statement for user
+              Container(                            
                 alignment: Alignment.topCenter,
                 child: Container(
-                  height: 150.0,
-                  width: 315.0,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: FIUMagenta, width: 2),
-                      borderRadius: BorderRadius.all(Radius.circular(25.0))
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(25.0),
-                    child: Text(
-                      "By submitting this screening, I affirm and attest that all the information and answers to screening questions herein are complete, true and correct to the best of my knowledge.",
-                      style: TextStyle(fontSize: 14.0, color: FIUNavyBlue),
+                  child: DottedBorder(
+                    borderType: BorderType.RRect,
+                    radius: Radius.circular(25.0),
+                    color: FIUMagenta,
+                    strokeWidth: 3,
+                    dashPattern: [5,5],
+                    child: Container(
+                      height: 206.0,
+                      width: 315.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(25.0),
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              "By submitting this screening, I affirm and attest that all the information and answers to screening questions herein are complete, true and correct to the best of my knowledge.",
+                              style: TextStyle(
+                                fontFamily: "Be Vietnam",
+                                fontSize: 14.0, 
+                                color: FIUNavyBlue
+                              ),
+                            ),
+                            Container(
+                              alignment: Alignment.bottomCenter,
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 20.0),
+                                child: Container(
+                                  padding: const EdgeInsets.only(left: 46),
+                                  child: Row(
+                                    children: [
+                                      buildAgreeButton(setting: agreeButton),
+                                      Container(
+                                        padding: const EdgeInsets.only(bottom: 10.0),
+                                        child: Text(
+                                          "I Agree",
+                                          style: TextStyle(
+                                            fontFamily: "Be Vietnam",
+                                            fontSize: 18.0, 
+                                            color: FIUNavyBlue
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              )
+              ),
+              // Text at the bottom of pink dotted border for more information
+              Container(
+                alignment: Alignment.topCenter,
+                padding: const EdgeInsets.only(top: 20),
+                child: Container(
+                  padding: const EdgeInsets.only(left: 25, right: 25),
+                  width: 315,
+                  child: Text(
+                    '*Questions and symptoms are based on the latest guidelines from the CDC and clinicians at Florida International University.',
+                    style: TextStyle(
+                      fontFamily: "Be Vietnam",
+                      fontSize: 14.0, 
+                      color: FIUNavyBlue
+                    )
+                  ),
+                )
+              ),
+              Container(
+                alignment: Alignment.topCenter,
+                padding: const EdgeInsets.only(top: 20),
+                child: Container(
+                  padding: const EdgeInsets.only(left: 25, right: 25),
+                  width: 315,
+                  child: GestureDetector(
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Centers for Disease Control and Prevention  ",
+                            style: TextStyle(
+                              fontFamily: "Be Vietnam",
+                              fontSize: 14.0, 
+                              color: FIUNavyBlue,
+                              decoration: TextDecoration.underline,
+                            )
+                          ),
+                          WidgetSpan(
+                            child: Icon(Icons.open_in_new, 
+                            size: 11,
+                            color: FIUNavyBlue
+                          ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    onTap: () => launch('https://www.cdc.gov/'),
+                  )
+                )
+              ),
+              Container(
+                padding: EdgeInsets.only(bottom: 53, top: 30),
+                alignment: Alignment.topCenter,
+                child: RoundedButtons
+                ('Submit', 
+                18.0, 50.0, 200.0, 
+                FIUNavyBlue,
+                Colors.white, 
+                25.0, 
+                () {
+                  // if statement checks if user either answers none or only one of the questions or if they did not agree
+                  // to the statement in the pink dotted border
+                  
+                  if (((options1[0].value == false && options1[1].value == false) ||
+                       (options2[0].value == false && options2[1].value == false)) ||
+                      agreeButton.value == false)                           
+                  {
+                    Widget cancelButton = FlatButton(           // button to exit alert dialog
+                      child: Text("OK"),
+                      onPressed:  () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+
+                    AlertDialog alert = AlertDialog(            // alert dialog for the user
+                      title: Text("You're missing something"),
+                      content: Text("You either have not answered any or only one of the questions above or you did not agree to the statement above. Answer both questions and agree to the statement above to submit your screening."),
+                      actions: [
+                        cancelButton
+                      ],
+                    );
+
+                    // show the dialog
+                    showDialog(                                 // show the alert dialog to user
+                      context: context,
+                      builder: (BuildContext context) {
+                        return alert;
+                      },
+                    );
+                  }
+
+                  else
+                  {
+                    if (widget.counter + counterTwo > 0)    // if the user had a score of more than zero, not authorized
+                    {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ResultsUNAUTHORIZED()),
+                      );
+                    }
+
+                    else                                    // otherwise, authorized
+                    {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ResultsAUTHORIZED()),
+                      );
+                    }
+                  }
+                }
+              ),
+            )
             ],
           )
         )
@@ -576,13 +731,13 @@ final options2 = [                                          // yes and no option
       width: setting.width,
       child: DecoratedBox(                                           // class for filling in the button when clicked with color
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(25.0)), 
+          borderRadius: BorderRadius.all(Radius.circular(25.0),), 
           color: setting.colorBackground                             // set background color for button
         ),
         child: Theme(
           data: Theme.of(context).copyWith(
             buttonTheme: ButtonTheme.of(context).copyWith(
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap)),
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap)),
           child: OutlineButton(
             textColor: setting.colorText,                           // set the color of the text in the button
             highlightElevation: 0,
@@ -603,6 +758,46 @@ final options2 = [                                          // yes and no option
           ),
         ),
       ),
+    );
+
+  Widget buildAgreeButton({
+  // The actual agree button widget, takes properties from AgreeSetting class
+
+    @required AgreeSetting setting,    // object of AgreeSetting passed here, contains properties for widget
+
+  }) => Container(
+      child: DecoratedBox(
+        decoration: ShapeDecoration(
+          shape: CircleBorder(),
+          color: setting.colorBackground
+        ),
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            buttonTheme: ButtonTheme.of(context).copyWith(
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap)),
+          child: OutlineButton(
+            shape: CircleBorder(),
+            borderSide: BorderSide(color: Color.fromRGBO(8, 30, 63, 1.0), width: 2),
+            child: Text(''),
+            onPressed: () => {
+              setState(() {
+                final newValue = !setting.value;
+                setting.value = newValue;           // either colors or uncolors 'I Agree' button
+
+                if (setting.value == true)
+                {
+                  setting.colorBackground = FIUNavyBlue;
+                }
+
+                else
+                {
+                  setting.colorBackground = Colors.white;
+                }
+              })
+            },
+          )
+        ),
+      )
     );
 }
 
@@ -631,5 +826,17 @@ class ButtonSetting {
     this.circularRadius = 25.0,
     this.fontSize = 18.0,
     this.value = false,     
+  });
+}
+
+class AgreeSetting {
+// Class to set properties for the 'I Agree' button
+
+  bool value;               // Whether button is colored in or not
+  Color colorBackground;    // background color of button
+
+  AgreeSetting({
+    this.colorBackground = Colors.white,
+    this.value = false
   });
 }
