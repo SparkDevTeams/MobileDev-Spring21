@@ -12,7 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  Future<String> signIn() async {
+  Future signIn() async {
     final formState = _formkey.currentState;
     String errorMessage;
 
@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
 
         if (errorMessage != null) {
-          errorMessage = errorMessage;
+          return Future.error(errorMessage);
         }
         // login to firebase
       }
