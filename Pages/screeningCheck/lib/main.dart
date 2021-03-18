@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'resultsPageAUTHORIZED.dart';
-import 'resultsPageUNAUTHORIZED.dart';
 import 'checkBoxPage.dart';
 
 void main() {

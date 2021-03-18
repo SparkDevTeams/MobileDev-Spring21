@@ -89,7 +89,7 @@ class ResultsAUTHORIZED extends StatelessWidget {
                 padding: EdgeInsets.only(top: 80),
                 alignment: Alignment.topCenter,
                 child: RoundedButtons('Home', 18.0, 50.0, 200.0, FIUNavyBlue,
-                    Colors.white, 25.0, () {}),
+                    Colors.white, 25.0, () {}),                                   // TODO: home button goes to homepage
               )
             ],
           ),
