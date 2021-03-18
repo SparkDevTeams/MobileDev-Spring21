@@ -6,6 +6,14 @@ import 'package:p3_MAIN/theme/themeData.dart';
 class ResourcesPage extends StatelessWidget {
   _launchURL(website) async {
     String url = '';
+    if (website == ('0')) {
+      url = 'https://repopulation.fiu.edu/';
+      if (await canLaunch(url)) {
+        await launch(url);
+      } else {
+        throw 'Could not launch $url';
+      }
+    }
     if (website == ('1')) {
       url = 'https://www.cdc.gov/';
       if (await canLaunch(url)) {
@@ -83,12 +91,50 @@ class ResourcesPage extends StatelessWidget {
             padding: const EdgeInsets.only(right: 25, left: 25),
             child: Column(children: <Widget>[
               Text(
-                "Resources",
+                "FIU Resources",
                 style: Theme.of(context).textTheme.headline1,
               ),
               Container(padding: const EdgeInsets.only(top: 5, bottom: 5)),
               Text(
                 "We have compiled all sorts of resources in this tab for you to use while riding out this pandemic. Stay knowledgeable and stay safe!",
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
+              Container(padding: const EdgeInsets.only(top: 10, bottom: 10)),
+              Container(
+                  height: 130,
+                  width: 400,
+                  child: RaisedButton(
+                    onPressed: () => _launchURL('0'),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "FIU Coronavirus Resources",
+                            style: new TextStyle(
+                                fontSize: 18, color: AppTheme.Colors.blueFIU),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "This is FIU's website for information such as campus repopulation, testing, relief efforts, etc. COVID-19 updates will also be on this website.",
+                            style: new TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w400),
+                          )
+                        ],
+                      ),
+                    ),
+                  )),
+              Container(padding: const EdgeInsets.only(top: 10, bottom: 10)),
+              Text("External resources",
+                  style: Theme.of(context).textTheme.headline1),
+              Text(
+                "We have also provided non-FIU resources in case you need any type of information that FIU may not have.",
                 style: Theme.of(context).textTheme.bodyText1,
               ),
               Container(padding: const EdgeInsets.only(top: 10, bottom: 10)),

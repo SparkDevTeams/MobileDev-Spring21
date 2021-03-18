@@ -172,11 +172,13 @@ class _LoginScreenState extends State<LoginScreen> {
             .get()
             .then((value) {
           print(value.data()["first_name"]);
+          print(value.data()["exposure_id"]);
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      HomeScreen(name: value.data()["first_name"])));
+                  builder: (BuildContext context) => HomeScreen(
+                      name: value.data()["first_name"],
+                      exposureId: value.data()["exposure_id"])));
         });
       } catch (e) {
         print(e.message);

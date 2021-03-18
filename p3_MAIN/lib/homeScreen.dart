@@ -5,9 +5,11 @@ import './UIWidgets/ButtonWidgets.dart';
 //import 'package:p3_MAIN/theme/themeData.dart';
 
 class HomeScreen extends StatelessWidget {
-  String name;
+  final String name;
+  final String exposureId;
+  // TODO: pass exposure ID into the exposure notification widget.
 
-  HomeScreen({this.name});
+  HomeScreen({this.name, this.exposureId});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class HomeScreen extends StatelessWidget {
                   icon: Icon(Icons.bluetooth),
                   splashRadius: 25,
                   color: AppTheme.Colors.blueFIU,
-                  onPressed: () {}),
+                  onPressed: null),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -58,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Container(
                     child: Text(
-                      "Welcome to campus! Please be considerate of your safety as well as others!",
+                      "Welcome to FIU's campus! Please be considerate of your safety as well as others!",
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
@@ -73,6 +75,7 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: HomePageButton(
+                        // TODO: change Navigator such that it takes the exposure ID into the page fore use.
                         "Exposure Notifications",
                         "View your history of exposures of COVID-19 or submit a positive test alert.",
                         null,
@@ -151,10 +154,20 @@ class HomePageButton extends StatelessWidget {
                           fontSize: 13,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.ac_unit,
+                    size: 1.0,
+                  )),
+              // TODO: Import image assets for each icon...
             ),
           ],
         ),
