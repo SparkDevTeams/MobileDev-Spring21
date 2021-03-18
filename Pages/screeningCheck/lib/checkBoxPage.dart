@@ -190,6 +190,7 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
           symptoms.forEach((symptom) {
             symptom.value = !setting.value;  // then uncheck every other checkbox
             counter = 0;
+            print(counter.toString());    
           });
         } 
 
@@ -212,13 +213,15 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
         setting.value = newValue;           // either checks or unchecks the checkbox
 
         if (!newValue) {                    // unchecks the no symptoms checkbox when a symptom checkbox is checked
-          counter--;                
+          counter--;
+          print(counter.toString());                
           noSymptoms.value = false;         
         } 
 
         // otherwise, make sure no symptoms checkbox is unchecked when a symptom checkbox is checked
         else {
           counter++;  
+          print(counter.toString());    
           final allow = symptoms.every((setting) => setting.value);
           noSymptoms.value = allow;
         }
@@ -612,6 +615,7 @@ AgreeSetting agreeButton = new AgreeSetting();
 
                     else                                    // otherwise, authorized
                     {
+                      counterTwo = 0;    
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => ResultsAUTHORIZED()),
@@ -640,7 +644,12 @@ AgreeSetting agreeButton = new AgreeSetting();
           setting.colorBackground = FIUNavyBlue;
           setting.value = true;
           if (counterTwo - 1 >= 0){    // if else statements to prevent counterTwo value of less than 0
-            counterTwo--;
+            if (setting.clickCounter == 0)
+            {
+              counterTwo--;
+            }
+            setting.clickCounter++;
+            options1[0].clickCounter = 0;
           }
           else {
             counterTwo = 0;
@@ -658,7 +667,12 @@ AgreeSetting agreeButton = new AgreeSetting();
           setting.colorBackground = FIUNavyBlue;
           setting.value = true;
           if (counterTwo - 1 >= 0){    // if else statements to prevent counterTwo value of less than 0
-            counterTwo--;
+            if (setting.clickCounter == 0)
+            {
+              counterTwo--;
+            }
+            setting.clickCounter++;
+            options2[0].clickCounter = 0;
           }
           else {
             counterTwo = 0;
@@ -685,7 +699,12 @@ AgreeSetting agreeButton = new AgreeSetting();
           setting.colorBackground = FIUNavyBlue;
           setting.value = true;
           if (counterTwo + 1 <= 2){    // if else statements to prevent counterTwo value of more than 2
-            counterTwo++;
+            if (setting.clickCounter == 0)
+            {
+              counterTwo++;
+            }
+            setting.clickCounter++;
+            options1[1].clickCounter = 0;
           }
           else {
             counterTwo = 2;
@@ -703,7 +722,12 @@ AgreeSetting agreeButton = new AgreeSetting();
           setting.colorBackground = FIUNavyBlue;
           setting.value = true;
           if (counterTwo + 1 <= 2){    // if else statements to prevent counterTwo value of more than 2
-            counterTwo++;
+            if (setting.clickCounter == 0)
+            {
+              counterTwo++;
+            }
+            setting.clickCounter++;
+            options2[1].clickCounter = 0;
           }
           else {
             counterTwo = 2;
@@ -814,6 +838,7 @@ class ButtonSetting {
   double circularRadius;    // roundness of butoon
   double fontSize;          // size of font
   int id;                   // ID of button, determines whether its for first or second question
+  int clickCounter;         // amount of times a button is clicked after it is selected
 
   ButtonSetting({
     @required this.id,
@@ -826,6 +851,7 @@ class ButtonSetting {
     this.circularRadius = 25.0,
     this.fontSize = 18.0,
     this.value = false,     
+    this.clickCounter = 0
   });
 }
 
