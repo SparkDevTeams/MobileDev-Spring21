@@ -50,6 +50,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         validator: (input) {
                           if (input.isEmpty) {
                             return "Please enter your Panther Email";
+                          } else if (input.contains(".") &&
+                              input.contains("@")) {
+                            return null;
+                          } else {
+                            return "Invalid email Address";
                           }
                         },
                         onSaved: (input) => _pantherid = input,
@@ -139,7 +144,10 @@ class _RegisterPageState extends State<RegisterPage> {
                               return "Please re-enter your password.";
                             }
                           },
-                          onSaved: (input) => _password = input,
+                          onSaved: (input) {
+                            _password = input;
+                            return _password;
+                          },
                           // PASSWORD
                           obscureText: true,
                           decoration: InputDecoration(
@@ -163,7 +171,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       TextFormField(
                           validator: (input) {
-                            if (input.isEmpty) {
+                            _passwordConfirmation = input;
+                            if (_passwordConfirmation.isEmpty) {
                               return "Please re-enter your password.";
                             }
                           },
