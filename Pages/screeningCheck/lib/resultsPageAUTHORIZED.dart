@@ -14,12 +14,12 @@ class ResultsAUTHORIZED extends StatelessWidget {
           shadowColor: Colors.transparent,
         ),
         body: Padding(
-          padding: const EdgeInsets.only(right: 20, left: 20),
+          padding: const EdgeInsets.all(20.0),                 // CHANGES: Replace the EdgeInset statements in the body for both authorized and unauthorized pages to this
           child: Column(
             children: <Widget>[
               // "Safety Screening Checklist" text.
               Container(
-                  padding: EdgeInsets.only(top: 20),    // Position of text on page.
+                  padding: EdgeInsets.only(),    // Position of text on page.
                   alignment: Alignment.topCenter,
                   child: SizedBox(
                     width: 315,
@@ -34,7 +34,7 @@ class ResultsAUTHORIZED extends StatelessWidget {
               // Edged box in the center of the screen, contains AUTHORIZED / UNAUTHORIZED text.
               Container(
                 padding: EdgeInsets.only(top: 70),    // Position of both the box and the text within it on page.
-                alignment: Alignment.topCenter,
+                alignment: Alignment.center,
                 child: Container(
                   height: 140.0,
                   width: 315.0,
@@ -81,15 +81,23 @@ class ResultsAUTHORIZED extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 14.0,
                               color: Colors.black,
-                              fontWeight: FontWeight.normal))
+                              fontWeight: FontWeight.normal
+                          )
+                      )
                     ],
                   ))),
               // Home button.
-              Container(
-                padding: EdgeInsets.only(top: 80),
-                alignment: Alignment.topCenter,
-                child: RoundedButtons('Home', 18.0, 50.0, 200.0, FIUNavyBlue,
-                    Colors.white, 25.0, () {}),                                   // TODO: home button goes to homepage
+              Expanded(                                                                 // CHANGES: Replace container for button at bottom of both authorized and unauthorized pages with this whole widget.
+                child: Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: Container(
+                    alignment: Alignment.bottomCenter,
+                    padding: const EdgeInsets.only(bottom: 33),
+                    child: RoundedButtons('Home', 18.0, 50.0, 200.0, FIUNavyBlue,
+                        Colors.white, 25.0, () {}                                       // TODO: home button goes to homepage
+                    ),
+                  ),
+                ),
               )
             ],
           ),
