@@ -12,8 +12,55 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  String _pantherid, _password;
+  Future signIn() async {
+    final formState = _formkey.currentState;
+    String errorMessage;
 
+    if (formState.validate()) {
+      formState.save();
+      try {
+        User user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
+                email: _pantherid, password: _password))
+            .user;
+        print(user.uid);
+        await DatabaseService(authID: user.uid);
+        FirebaseFirestore.instance
+            .collection("user_info")
+            .doc(user.uid)
+            .get()
+            .then((value) {
+          print(value.data()["first_name"]);
+          print(value.data()["exposure_id"]);
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) => HomeScreen(
+                      name: value.data()["first_name"],
+                      exposureId: value.data()["exposure_id"])));
+        });
+      } catch (e) {
+        print(e.message);
+        switch (e.code) {
+          case 'The email address is badly formatted.':
+            errorMessage = 'Please Re-enter your Panther Email.';
+            break;
+          case 'There is no user record corresponding to this identifier. The user may have been deleted.':
+            errorMessage = 'Please re-enter your email';
+            break;
+          case 'The password is invalid or the user does not have a password.':
+            errorMessage = 'The password is invalid.';
+        }
+
+        if (errorMessage != null) {
+          return Future.error(errorMessage);
+        }
+        // login to firebase
+      }
+    }
+    return errorMessage;
+  }
+
+  String _pantherid, _password, _errorMessage;
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
@@ -156,37 +203,5 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Future<void> signIn() async {
-    final formState = _formkey.currentState;
-    if (formState.validate()) {
-      formState.save();
-      try {
-        User user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
-                email: _pantherid, password: _password))
-            .user;
-        print(user.uid);
-        await DatabaseService(authID: user.uid);
-        FirebaseFirestore.instance
-            .collection("user_info")
-            .doc(user.uid)
-            .get()
-            .then((value) {
-          print(value.data()["first_name"]);
-          print(value.data()["exposure_id"]);
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => HomeScreen(
-                      name: value.data()["first_name"],
-                      exposureId: value.data()["exposure_id"])));
-        });
-      } catch (e) {
-        print(e.message);
-      }
-
-      // login to firebase
-    }
-  }
-}
-
 // TODO: we need to also return the exposure ID code to the homescreen
+}
