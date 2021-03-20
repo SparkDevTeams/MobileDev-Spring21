@@ -33,8 +33,10 @@ class SettingsPage extends StatelessWidget {
             ),
             RaisedButton(
                 child: Text("Test Signout Button"),
-                onPressed: () {
-                  signOUt();
+                onPressed: () async {
+                  print(FirebaseAuth.instance.currentUser);
+                  await FirebaseAuth.instance.signOut();
+                  print("Signed user out.");
                   Navigator.pushNamedAndRemoveUntil(
                       context, '/login', (route) => false);
                 }),
@@ -44,8 +46,4 @@ class SettingsPage extends StatelessWidget {
       ),
     );
   }
-}
-
-Future<void> signOUt() async {
-  await FirebaseAuth.instance.signOut();
 }

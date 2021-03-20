@@ -178,5 +178,4 @@ class HomePageButton extends StatelessWidget {
     );
   }
 }
-
 // TODO: We need to pass Exposure ID into exposure notifications.

@@ -250,8 +250,9 @@ class _RegisterPageState extends State<RegisterPage> {
             .createUserWithEmailAndPassword(
                 email: _pantherid, password: _password);
 
-        await DatabaseService(authID: userCredential.user.uid)
-            .updateUserData(_pantherid, _firstName, _lastName, exposureNotifID);
+        await DatabaseService(authID: userCredential.user.uid).updateUserData(
+            _pantherid, _firstName, _lastName, exposureNotifID, null, null);
+        // TODO: take Database service out of login method.
       } catch (e) {
         print(e.message);
         Navigator.pop(context);

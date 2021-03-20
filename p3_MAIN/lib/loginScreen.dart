@@ -23,7 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 email: _pantherid, password: _password))
             .user;
         print(user.uid);
-        await DatabaseService(authID: user.uid);
         FirebaseFirestore.instance
             .collection("user_info")
             .doc(user.uid)
@@ -202,6 +201,5 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
 // TODO: we need to also return the exposure ID code to the homescreen
 }
