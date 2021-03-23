@@ -66,12 +66,7 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
                   child: SizedBox(
                     width: 315,
                     child: Text('Safety Screening Checklist',
-                        style: TextStyle(
-                          color: FIUNavyBlue,
-                          fontFamily: "Be Vietnam",
-                          fontSize: 39,
-                          fontWeight: FontWeight.w800,
-                        )),
+                        style: Theme.of(context).textTheme.headline1),
                   )),
               Container(
                 padding: EdgeInsets.only(
@@ -351,6 +346,7 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
     return Scaffold(
         appBar: AppBar(
             shadowColor: Colors.transparent,
+            backgroundColor: Colors.transparent,
             leading: IconButton(
               icon: const Icon(Icons.arrow_back, color: FIUNavyBlue, size: 35),
               onPressed: () {
@@ -369,12 +365,7 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                     child: SizedBox(
                       width: 315,
                       child: Text('Safety Screening Checklist',
-                          style: TextStyle(
-                            color: FIUNavyBlue,
-                            fontFamily: "Be Vietnam",
-                            fontSize: 39,
-                            fontWeight: FontWeight.w800,
-                          )),
+                          style: Theme.of(context).textTheme.headline1),
                     )),
                 // First question textbox
                 Container(
