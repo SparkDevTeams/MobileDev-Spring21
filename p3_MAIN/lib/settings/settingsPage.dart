@@ -182,9 +182,7 @@ class SettingsPage extends StatelessWidget {
                 style: TextStyle(fontSize: 20,color: Colors.white),
               ),
           
-                onPressed: ()async{
-                      Navigator.pushReplacementNamed(context, '/login');        
-                }
+                onPressed: signOut
                       
               )         
                         
@@ -200,7 +198,11 @@ class SettingsPage extends StatelessWidget {
  final _auth = FirebaseAuth.instance;
 
   Future<void> signOut() async {
-    await _auth.signOut();
+    print(FirebaseAuth.instance.currentUser);
+    await FirebaseAuth.instance.signOut();
+    print("Signed user out.");
+    Navigator.pushNamedAndRemoveUntil(
+        context, '/login', (route) => false);
   
   }
 
