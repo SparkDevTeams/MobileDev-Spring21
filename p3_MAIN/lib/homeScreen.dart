@@ -67,6 +67,7 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: HomePageButton(
+                        //TODO: PASS in the AuthID to this
                         "Screening Checklist",
                         "Please fill this out before coming on campus! This checklist will determine if you are cleared to go on campus or not.",
                         '/checklist_p1',
@@ -75,7 +76,8 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: HomePageButton(
-                        // TODO: change Navigator such that it takes the exposure ID into the page fore use.
+                        //TODO: PASS in the AuthID to this
+                        // TODO: When auth ID is obtained, it will refer to the collection
                         "Exposure Notifications",
                         "View your history of exposures of COVID-19 or submit a positive test alert.",
                         null,

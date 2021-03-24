@@ -222,6 +222,8 @@ PODS:
     - Firebase/Firestore (= 7.3.0)
     - firebase_core
     - Flutter
+  - device_info (0.0.1):
+    - Flutter
   - Firebase/Auth (7.3.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 7.3.0)
@@ -264,6 +266,12 @@ PODS:
     - leveldb-library (~> 1.22)
     - nanopb (~> 2.30906.0)
   - Flutter (1.0.0)
+  - flutter_nearby_connections (0.0.1):
+    - Flutter
+    - SwiftyJSON (~> 4.0)
+  - fluttertoast (0.0.2):
+    - Flutter
+    - Toast
   - GoogleDataTransport (8.1.0):
     - nanopb (~> 2.30906.0)
   - GoogleUtilities/AppDelegateSwizzler (7.3.0):
@@ -313,14 +321,19 @@ PODS:
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.12)
+  - SwiftyJSON (4.3.0)
+  - Toast (4.0.0)
   - url_launcher (0.0.1):
     - Flutter
 
 DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
+  - device_info (from `.symlinks/plugins/device_info/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
+  - flutter_nearby_connections (from `.symlinks/plugins/flutter_nearby_connections/ios`)
+  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
 SPEC REPOS:
@@ -340,16 +353,24 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - SwiftyJSON
+    - Toast
 
 EXTERNAL SOURCES:
   cloud_firestore:
     :path: ".symlinks/plugins/cloud_firestore/ios"
+  device_info:
+    :path: ".symlinks/plugins/device_info/ios"
   firebase_auth:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: Flutter
+  flutter_nearby_connections:
+    :path: ".symlinks/plugins/flutter_nearby_connections/ios"
+  fluttertoast:
+    :path: ".symlinks/plugins/fluttertoast/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
 
@@ -357,6 +378,7 @@ SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   cloud_firestore: 357b92d4778d7715d76a393db5f89e7dcc9b7401
+  device_info: d7d233b645a32c40dfdc212de5cf646ca482f175
   Firebase: 26223c695fe322633274198cb19dca8cb7e54416
   firebase_auth: 7220e26fc14a501a63093edc10443de6bca0d7e8
   firebase_core: 91b27774a52f41f8b58484a75edf71197ac01c59
@@ -365,6 +387,8 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: d50e11039e5984d92c8a512be2395f13df747350
   FirebaseFirestore: 1906bf163afdb7c432d2e3b5c40ceb9dd2df5820
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  flutter_nearby_connections: 68c6cb88dcbf781e74adac01f4e93b853a30ee34
+  fluttertoast: 6122fa75143e992b1d3470f61000f591a798cc58
   GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab
   GoogleUtilities: abda45f519bc4073aa1171d2f8742108def46017
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
@@ -373,6 +397,8 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
 
 PODFILE CHECKSUM: 0a00ea4b5aa95d9024ec9f2d736a982ee55cc99d
