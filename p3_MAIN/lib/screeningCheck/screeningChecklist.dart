@@ -333,6 +333,8 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
         text: 'No'),
   ];
 
+  bool logicGate = false;     // logic gate for helping control the toggle 'yes / no' questions
+
   AgreeSetting agreeButton = new AgreeSetting();
 
   @override
@@ -588,6 +590,12 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                         },
                       );
                     } else {
+                      var currTime = DateTime.now().toLocal();    // get the current time of submission
+
+                      print(currTime);
+
+                      //TODO: convert the time into EST time
+
                       if (widget.counter + counterTwo >
                           0) // if the user had a score of more than zero, not authorized
                       {
@@ -646,7 +654,7 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
             setting.value = true;
             if (counterTwo - 1 >= 0) {
               // if else statements to prevent counterTwo value of less than 0
-              if (setting.clickCounter == 0) {
+              if (setting.clickCounter == 0 && logicGate == false) {
                 counterTwo--;
               }
               setting.clickCounter++;
@@ -677,6 +685,14 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
               // if else statements to prevent counterTwo value of more than 2
               if (setting.clickCounter == 0) {
                 counterTwo++;
+                if (options2[0].value)
+                {
+                  logicGate = false;
+                }
+                else
+                {
+                  logicGate = true;
+                }
               }
               setting.clickCounter++;
               options1[1].clickCounter = 0;
@@ -698,6 +714,7 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
               // if else statements to prevent counterTwo value of more than 2
               if (setting.clickCounter == 0) {
                 counterTwo++;
+                logicGate = false;
               }
               setting.clickCounter++;
               options2[1].clickCounter = 0;
