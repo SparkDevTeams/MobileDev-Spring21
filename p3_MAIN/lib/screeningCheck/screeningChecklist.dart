@@ -558,6 +558,9 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                     // if statement checks if user either answers none or only one of the questions or if they did not agree
                     // to the statement in the pink dotted border
 
+                    //TODO: Get timestamp at press, using authID we can get documents for the coresponding thing.
+                    //TODO: AFter the documents specific document
+
                     if (((options1[0].value == false &&
                                 options1[1].value == false) ||
                             (options2[0].value == false &&

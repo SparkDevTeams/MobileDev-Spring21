@@ -15,6 +15,6 @@ class Tracer {
 
   Tracer({var authorizationID, var exposureID })
 
-  NearbyService().init
+  //NearbyService().init
 }
 

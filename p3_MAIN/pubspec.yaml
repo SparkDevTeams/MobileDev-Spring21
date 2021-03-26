@@ -21,13 +21,13 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  dotted_border: ^1.0.7
   flutter:
     sdk: flutter
   firebase_auth: ^0.20.1
   firebase_core: ^0.7.0
   url_launcher: ^5.7.10
   cloud_firestore: ^0.16.0+1
-  dotted_border: ^1.0.7
   flutter_nearby_connections: ^1.0.10
   device_info: ^2.0.0
 

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:p3_MAIN/exposeNotif/exposureConfirmPage.dart';
 import 'package:p3_MAIN/theme/colors.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
 import './UIWidgets/ButtonWidgets.dart';
+import './exposeNotif/exposureThankyou.dart';
 //import 'package:p3_MAIN/theme/themeData.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -74,15 +76,70 @@ class HomeScreen extends StatelessWidget {
                         170.0),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: HomePageButton(
-                        //TODO: PASS in the AuthID to this
-                        // TODO: When auth ID is obtained, it will refer to the collection
-                        "Exposure Notifications",
-                        "View your history of exposures of COVID-19 or submit a positive test alert.",
-                        null,
-                        150.0),
-                  ),
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Container(
+                        width: 500,
+                        height: 150,
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(25)),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 170,
+                                child: Center(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 10),
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "Exposure Notifications",
+                                            style: TextStyle(
+                                                color: AppTheme.Colors.blueFIU,
+                                                fontSize: 26,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        //padding: EdgeInsets.only(top: 15),
+                                        //color: Colors.amber,
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          "View your history of exposures of COVID-19 or submit a positive test alert.",
+                                          style: TextStyle(
+                                            color: AppTheme.Colors.blueFIU,
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Icon(
+                                      Icons.ac_unit,
+                                      size: 1.0,
+                                    )),
+                                // TODO: Import image assets for each icon...
+                              ),
+                            ],
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => ExposureConfirmation(),
+                                ));
+                          },
+                        ),
+                      )),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: HomePageButton(
