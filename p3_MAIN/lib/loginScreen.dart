@@ -182,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.grey,
                           child: Text(
                             "Register",
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                           onPressed: () {
                             Navigator.pushNamed(context, '/registerPage');

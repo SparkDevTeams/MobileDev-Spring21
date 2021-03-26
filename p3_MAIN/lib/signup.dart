@@ -37,11 +37,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        "Register for FIU's P3",
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.normal,
-                            color: AppTheme.Colors.blueFIU),
+                        "Register for P3",
+                        style: Theme.of(context).textTheme.headline1,
                       ),
                       SizedBox(
                         height: 10,
