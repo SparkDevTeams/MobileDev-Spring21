@@ -18,13 +18,11 @@ class ResultsUNAUTHORIZED extends StatelessWidget {
           shadowColor: Colors.transparent,
         ),
         body: Padding(
-          padding: const EdgeInsets.only(right: 20, left: 20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             children: <Widget>[
               // "Safety Screening Checklist" text.
               Container(
-                  padding:
-                      EdgeInsets.only(top: 20), // Position of text on page.
                   alignment: Alignment.topCenter,
                   child: SizedBox(
                     width: 315,
@@ -92,19 +90,25 @@ class ResultsUNAUTHORIZED extends StatelessWidget {
                     ],
                   ))),
               // Home button.
-              Container(
-                padding: EdgeInsets.only(top: 86),
-                alignment: Alignment.topCenter,
-                child: RoundedButtons(
-                    'Home', 18.0, 50.0, 200.0, FIUNavyBlue, Colors.white, 25.0,
-                    () {
-                  Navigator.pop(context);
-                  print("pop 1");
-                  Navigator.pop(context);
-                  print("pop 2");
-                  Navigator.pop(context);
-                  print("You're now home.");
-                }), // TODO: home button goes to homepage
+              Expanded(                                                                 // Added Expanded and Align widgets to fix home button
+                child: Align(
+                  alignment: FractionalOffset.bottomCenter,
+                  child: Container(
+                    alignment: Alignment.bottomCenter,
+                    padding: const EdgeInsets.only(bottom: 33),
+                    child: RoundedButtons('Home', 18.0, 50.0, 200.0, FIUNavyBlue,
+                        Colors.white, 25.0, 
+                        () {
+                          Navigator.pop(context);
+                          print("pop 1");
+                          Navigator.pop(context);
+                          print("pop 2");
+                          Navigator.pop(context);
+                          print("You're now home.");
+                        }
+                      )
+                    )
+                ),
               )
             ],
           ),

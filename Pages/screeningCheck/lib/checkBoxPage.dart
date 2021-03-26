@@ -647,12 +647,14 @@ AgreeSetting agreeButton = new AgreeSetting();
             if (setting.clickCounter == 0)
             {
               counterTwo--;
+              print(counterTwo.toString());
             }
             setting.clickCounter++;
             options1[0].clickCounter = 0;
           }
           else {
             counterTwo = 0;
+            print(counterTwo.toString());
           }
 
           options1[0].value = false;
@@ -670,12 +672,14 @@ AgreeSetting agreeButton = new AgreeSetting();
             if (setting.clickCounter == 0)
             {
               counterTwo--;
+              print(counterTwo.toString());
             }
             setting.clickCounter++;
             options2[0].clickCounter = 0;
           }
           else {
             counterTwo = 0;
+            print(counterTwo.toString());
           }
 
           options2[0].value = false;
@@ -702,12 +706,14 @@ AgreeSetting agreeButton = new AgreeSetting();
             if (setting.clickCounter == 0)
             {
               counterTwo++;
+              print(counterTwo.toString());
             }
             setting.clickCounter++;
             options1[1].clickCounter = 0;
           }
           else {
             counterTwo = 2;
+            print(counterTwo.toString());
           }
 
           options1[1].value = false;
@@ -725,12 +731,14 @@ AgreeSetting agreeButton = new AgreeSetting();
             if (setting.clickCounter == 0)
             {
               counterTwo++;
+              print(counterTwo.toString());
             }
             setting.clickCounter++;
             options2[1].clickCounter = 0;
           }
           else {
             counterTwo = 2;
+            print(counterTwo.toString());
           }
 
           options2[1].value = false;
