@@ -35,30 +35,32 @@ class ResultsUNAUTHORIZED extends StatelessWidget {
                         )),
                   )),
               // Edged box in the center of the screen, contains AUTHORIZED / UNAUTHORIZED text.
-              Container(
-                padding: EdgeInsets.only(
-                    top:
-                        70), // Position of both the box and the text within it on page.
-                alignment: Alignment.topCenter,
-                child: Container(
-                  height: 140.0,
-                  width: 315.0,
-                  decoration: BoxDecoration(
-                      // The edged box itself.
-                      color: FIUMagenta,
-                      borderRadius: BorderRadius.all(Radius.circular(30))),
-                  // To hold text within the box.
-                  child: Padding(
-                    padding: const EdgeInsets.all(25.0),
+              Expanded(
+                child: Align(
+                  alignment: FractionalOffset.center,
+                  child: Container(
+                    alignment: Alignment.bottomCenter,
                     child: Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        "You are NOT AUTHORIZED to go on campus. Please stay home.",
-                        style: TextStyle(
-                            fontFamily: "Be Vietnam",
-                            fontSize: 17.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600),
+                      height: 140.0,
+                      width: 315.0,
+                      decoration: BoxDecoration(
+                          // The edged box itself.
+                          color: FIUMagenta,
+                          borderRadius: BorderRadius.all(Radius.circular(30))),
+                      // To hold text within the box.
+                      child: Padding(
+                        padding: const EdgeInsets.all(25.0),
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "You are NOT AUTHORIZED to go on campus. Please stay home.",
+                            style: TextStyle(
+                                fontFamily: "Be Vietnam",
+                                fontSize: 17.0,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
                       ),
                     ),
                   ),

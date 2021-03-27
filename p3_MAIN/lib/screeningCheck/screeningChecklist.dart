@@ -483,26 +483,16 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                                   child: Padding(
                                     padding: const EdgeInsets.only(top: 20.0),
                                     child: Container(
-                                      padding: const EdgeInsets.only(left: 46),
                                       child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
                                         children: [
                                           buildAgreeButton(
                                               setting: agreeButton),
-                                          Container(
-                                            padding: const EdgeInsets.only(
-                                                bottom: 10.0),
-                                            child: Text(
-                                              "I Agree",
-                                              style: TextStyle(
-                                                  fontFamily: "Be Vietnam",
-                                                  fontSize: 18.0,
-                                                  color: FIUNavyBlue),
-                                            ),
-                                          ),
                                         ],
                                       ),
                                     ),
-                                  ))
+                                  )
+                                )
                             ],
                           ),
                         ),
@@ -594,8 +584,68 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                       );
                     } else {
                       var currTime = DateTime.now().toLocal();    // get the current time of submission
+                      String currDay = "";
+                      String currMonth = "";
+                      String ending = currTime.hour < 12 ? "AM" : "PM";
+                      String currDate = "";
+                      String currHour = "";
+                      String currMin = "";
+                      String currHourAndMin = "";
+                      
+                      if (currTime.day < 10)                      // for fixing day format
+                      {
+                        currDay = "0" + currTime.day.toString();
+                      }
 
-                      print(currTime);
+                      else
+                      {
+                        currDay = currTime.day.toString();
+                      }
+
+                      if (currTime.month < 10)                    // for fixing month format
+                      {
+                        currMonth = "0" + currTime.month.toString();
+                      }
+
+                      else
+                      {
+                        currMonth = currTime.month.toString();
+                      }
+
+                      if (currTime.hour > 12)                     // for fixing hour format
+                      {
+                        currHour = (currTime.hour - 12).toString();
+                      }
+
+                      else if (currTime.hour == 0)
+                      {
+                        currHour = "12";
+                      }
+
+                      else
+                      {
+                        currHour = currTime.hour.toString();
+                      }
+
+                      if (currTime.hour == 24)
+                      {
+                        ending = "AM";
+                      }
+
+                      if (currTime.minute < 10)                   // for fixing minute format
+                      {
+                        currMin = "0" + currTime.minute.toString();
+                      }
+
+                      else
+                      {
+                        currMin = currTime.minute.toString();
+                      }
+
+                      currDate = currMonth + "/" + currDay + "/" + (currTime.year % 100).toString();
+                      currHourAndMin = currHour + ":" + currMin + " " + ending + " EST";
+
+                      print(currDate + " at " + currHourAndMin);
 
                       //TODO: convert the time into EST time
 
@@ -766,7 +816,6 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                   setting.colorText, // set the color of the text in the button
               highlightElevation: 0,
               child: Container(
-                alignment: Alignment(0.0, -0.2),
                 child: Text(
                   "${setting.text}",
                   style: new TextStyle(
@@ -792,35 +841,31 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
     @required
         AgreeSetting
             setting, // object of AgreeSetting passed here, contains properties for widget
-  }) =>
-      Container(
-          child: DecoratedBox(
-        decoration: ShapeDecoration(
-            shape: CircleBorder(), color: setting.colorBackground),
-        child: Theme(
-            data: Theme.of(context).copyWith(
-                buttonTheme: ButtonTheme.of(context).copyWith(
-                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap)),
-            child: OutlineButton(
-              shape: CircleBorder(),
-              borderSide:
-                  BorderSide(color: Color.fromRGBO(8, 30, 63, 1.0), width: 2),
-              child: Text(''),
-              onPressed: () => {
-                setState(() {
-                  final newValue = !setting.value;
-                  setting.value =
-                      newValue; // either colors or uncolors 'I Agree' button
-
-                  if (setting.value == true) {
-                    setting.colorBackground = FIUNavyBlue;
-                  } else {
-                    setting.colorBackground = Colors.white;
-                  }
-                })
-              },
-            )),
-      ));
+  }) => Expanded(
+          child: Align(
+            child: Container(
+              width: 150,
+              child: CheckboxListTile(
+                value: setting.value,       // value of whether or not the checkbox is checked (true for checked, false for unchecked)
+                contentPadding: const EdgeInsets.only(right: 10, left: 10),
+                controlAffinity: ListTileControlAffinity.leading,
+                title: Text("I Agree",
+                  style: TextStyle(
+                    fontFamily: "Be Vietnam",
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w600,
+                  )),
+                activeColor: Color.fromRGBO(8, 30, 63, 1.0),
+                onChanged: (value) => {
+                  setState(() {
+                    final newValue = !setting.value;
+                    setting.value = newValue;                       // either checks or unchecks the checkbox
+                  })
+                }
+              ),
+            ),
+          ),
+        );
 }
 
 class ButtonSetting {
@@ -856,9 +901,8 @@ class AgreeSetting {
 // Class to set properties for the 'I Agree' button
 
   bool value; // Whether button is colored in or not
-  Color colorBackground; // background color of button
 
-  AgreeSetting({this.colorBackground = Colors.white, this.value = false});
+  AgreeSetting({this.value = false});
 }
 
 class RoundedButtons extends StatelessWidget {
