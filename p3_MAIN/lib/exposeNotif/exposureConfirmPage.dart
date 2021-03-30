@@ -95,7 +95,7 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
                           Center(
                             child: Container(
@@ -116,7 +116,7 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
                   ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 Container(
                   height: 55,
@@ -141,9 +141,6 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25)),
                   ),
-                ),
-                SizedBox(
-                  height: 40,
                 ),
               ])),
         ));

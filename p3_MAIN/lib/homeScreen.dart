@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:p3_MAIN/exposeNotif/exposureConfirmPage.dart';
 import 'package:p3_MAIN/theme/colors.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
-import './UIWidgets/ButtonWidgets.dart';
-import './exposeNotif/exposureThankyou.dart';
 //import 'package:p3_MAIN/theme/themeData.dart';
+import './exposeNotif/exposureWelcome.dart';
 
 class HomeScreen extends StatelessWidget {
   final String name;
@@ -135,7 +134,7 @@ class HomeScreen extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ExposureConfirmation(),
+                                  builder: (context) => ExposureWelcomeScreen(),
                                 ));
                           },
                         ),
