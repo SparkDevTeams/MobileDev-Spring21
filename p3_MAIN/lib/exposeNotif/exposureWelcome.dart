@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
 import 'exposureConfirmPage.dart';
+import 'fetchFirebaseData.dart';
 
-class ExposureWelcomeScreen extends StatelessWidget {
+class ExposureWelcomeScreen extends StatefulWidget {
+  @override
+  _ExposureWelcomeScreenState createState() => _ExposureWelcomeScreenState();
+}
+
+class _ExposureWelcomeScreenState extends State<ExposureWelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,12 +56,15 @@ class ExposureWelcomeScreen extends StatelessWidget {
                     height: 140,
                     width: 400,
                     child: RaisedButton(
-                        onPressed: () {
-                          Navigator.push(
+                        onPressed: () async {
+                          bool docExists = await checkDoc("initial");
+                          print("Document exists in exposed collection = " +
+                              docExists.toString());
+                          /* Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      ExposureConfirmation()));
+                                      ExposureConfirmation())); */
                         },
                         child: Text(
                           "I have tested POSITIVE and or showing symptoms of COVID-19 and would like to anonymously notify anyone that has been in contact with me in the last 14 days.",
@@ -67,7 +76,7 @@ class ExposureWelcomeScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                      top: 50,
+                      top: 30,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +104,16 @@ class ExposureWelcomeScreen extends StatelessWidget {
                               radius: Radius.circular(25),
                               child: Padding(
                                   padding: const EdgeInsets.all(10.0),
-                                  child: null // TODO Make list of exposures!!),
+                                  child: ListView.builder(
+                                    itemCount: 10,
+                                    itemBuilder: (context, index) {
+                                      return Card(
+                                        child: ListTile(
+                                          title: Text('nice'),
+                                        ),
+                                      );
+                                    },
+                                  ) // TODO Make list of exposures!!),
                                   ),
                             ))
                       ],
