@@ -132,6 +132,7 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
                     ),
                     onPressed: () {
                       print(user);
+                      // TODO, on pressed, take authID and send to exposed_id collection.
                       Navigator.push(
                           context,
                           MaterialPageRoute(

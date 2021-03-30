@@ -70,6 +70,7 @@ class ExposureThankYouPage extends StatelessWidget {
                           onPressed: () {
                             Navigator.pop(context);
                             Navigator.pop(context);
+                            Navigator.pop(context);
                             // TODO add the other Navigator pop when the first page is added.
                             // Navigator.pop(context);
                           },

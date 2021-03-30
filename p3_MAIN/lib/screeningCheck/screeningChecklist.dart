@@ -55,16 +55,17 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
               }, // TODO: Go back to homepage functionality
             )),
         body: Padding(
-          padding: const EdgeInsets.only(right: 20, left: 20),
+          padding: const EdgeInsets.only(right: 25, left: 25),
           child: ListView(
             children: <Widget>[
               // "Safety Screening Checklist" text.
               Container(
+                  width: 400,
                   padding:
                       EdgeInsets.only(top: 20), // Position of text on page.
                   alignment: Alignment.topCenter,
                   child: SizedBox(
-                    width: 315,
+                    width: 400,
                     child: Text('Safety Screening Checklist',
                         style: Theme.of(context).textTheme.headline1),
                   )),
@@ -75,7 +76,7 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
                 alignment: Alignment.topCenter,
                 child: Container(
                   height: 152.0,
-                  width: 315.0,
+                  width: 400,
                   decoration: BoxDecoration(
                       // The edged box itself.
                       color: FIUNavyBlue,
@@ -333,7 +334,8 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
         text: 'No'),
   ];
 
-  bool logicGate = false;     // logic gate for helping control the toggle 'yes / no' questions
+  bool logicGate =
+      false; // logic gate for helping control the toggle 'yes / no' questions
 
   AgreeSetting agreeButton = new AgreeSetting();
 
@@ -365,7 +367,7 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                         EdgeInsets.only(top: 20), // Position of text on page.
                     alignment: Alignment.topCenter,
                     child: SizedBox(
-                      width: 315,
+                      width: 400,
                       child: Text('Safety Screening Checklist',
                           style: Theme.of(context).textTheme.headline1),
                     )),
@@ -377,7 +379,7 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                   alignment: Alignment.topCenter,
                   child: Container(
                     height: 130.0,
-                    width: 315.0,
+                    width: 400,
                     decoration: BoxDecoration(
                         // The edged box itself.
                         color: FIUNavyBlue,
@@ -386,13 +388,13 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                     child: Padding(
                       padding: const EdgeInsets.all(25.0),
                       child: Container(
-                          width: 315,
+                          width: 400,
                           alignment: Alignment.center,
                           child: Text(
                               'Have you been in contact with anyone diagnosed with, or displaying symptoms of, COVID-19 within the last 14 days?',
                               style: TextStyle(
                                   fontFamily: "Be Vietnam",
-                                  fontSize: 14.0,
+                                  fontSize: 18.0,
                                   fontWeight: FontWeight.normal,
                                   color: Colors.white))),
                     ),
@@ -418,7 +420,7 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                   alignment: Alignment.topCenter,
                   child: Container(
                     height: 91.0,
-                    width: 315.0,
+                    width: 400,
                     decoration: BoxDecoration(
                         // The edged box itself.
                         color: FIUNavyBlue,
@@ -427,13 +429,13 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                     child: Padding(
                       padding: const EdgeInsets.all(25.0),
                       child: Container(
-                          width: 315,
+                          width: 400,
                           alignment: Alignment.center,
                           child: Text(
                               'Within the last 14 days, have you tested positive for COVID-19?',
                               style: TextStyle(
                                   fontFamily: "Be Vietnam",
-                                  fontSize: 14.0,
+                                  fontSize: 18.0,
                                   fontWeight: FontWeight.normal,
                                   color: Colors.white))),
                     ),
@@ -462,11 +464,11 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                       borderType: BorderType.RRect,
                       radius: Radius.circular(25.0),
                       color: FIUMagenta,
-                      strokeWidth: 3,
-                      dashPattern: [5, 5],
+                      strokeWidth: 2,
+                      dashPattern: [6, 4],
                       child: Container(
-                        height: 206.0,
-                        width: 315.0,
+                        //height: 250,
+                        width: 400,
                         child: Padding(
                           padding: const EdgeInsets.all(25.0),
                           child: Column(
@@ -475,7 +477,7 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                                 "By submitting this screening, I affirm and attest that all the information and answers to screening questions herein are complete, true and correct to the best of my knowledge.",
                                 style: TextStyle(
                                     fontFamily: "Be Vietnam",
-                                    fontSize: 14.0,
+                                    fontSize: 18.0,
                                     color: FIUNavyBlue),
                               ),
                               Container(
@@ -484,15 +486,15 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                                     padding: const EdgeInsets.only(top: 20.0),
                                     child: Container(
                                       child: Row(
-                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
                                         children: [
                                           buildAgreeButton(
                                               setting: agreeButton),
                                         ],
                                       ),
                                     ),
-                                  )
-                                )
+                                  ))
                             ],
                           ),
                         ),
@@ -583,7 +585,8 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                         },
                       );
                     } else {
-                      var currTime = DateTime.now().toLocal();    // get the current time of submission
+                      var currTime = DateTime.now()
+                          .toLocal(); // get the current time of submission
                       String currDay = "";
                       String currMonth = "";
                       String ending = currTime.hour < 12 ? "AM" : "PM";
@@ -591,59 +594,48 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                       String currHour = "";
                       String currMin = "";
                       String currHourAndMin = "";
-                      
-                      if (currTime.day < 10)                      // for fixing day format
+
+                      if (currTime.day < 10) // for fixing day format
                       {
                         currDay = "0" + currTime.day.toString();
-                      }
-
-                      else
-                      {
+                      } else {
                         currDay = currTime.day.toString();
                       }
 
-                      if (currTime.month < 10)                    // for fixing month format
+                      if (currTime.month < 10) // for fixing month format
                       {
                         currMonth = "0" + currTime.month.toString();
-                      }
-
-                      else
-                      {
+                      } else {
                         currMonth = currTime.month.toString();
                       }
 
-                      if (currTime.hour > 12)                     // for fixing hour format
+                      if (currTime.hour > 12) // for fixing hour format
                       {
                         currHour = (currTime.hour - 12).toString();
-                      }
-
-                      else if (currTime.hour == 0)
-                      {
+                      } else if (currTime.hour == 0) {
                         currHour = "12";
-                      }
-
-                      else
-                      {
+                      } else {
                         currHour = currTime.hour.toString();
                       }
 
-                      if (currTime.hour == 24)
-                      {
+                      if (currTime.hour == 24) {
                         ending = "AM";
                       }
 
-                      if (currTime.minute < 10)                   // for fixing minute format
+                      if (currTime.minute < 10) // for fixing minute format
                       {
                         currMin = "0" + currTime.minute.toString();
-                      }
-
-                      else
-                      {
+                      } else {
                         currMin = currTime.minute.toString();
                       }
 
-                      currDate = currMonth + "/" + currDay + "/" + (currTime.year % 100).toString();
-                      currHourAndMin = currHour + ":" + currMin + " " + ending + " EST";
+                      currDate = currMonth +
+                          "/" +
+                          currDay +
+                          "/" +
+                          (currTime.year % 100).toString();
+                      currHourAndMin =
+                          currHour + ":" + currMin + " " + ending + " EST";
 
                       print(currDate + " at " + currHourAndMin);
 
@@ -738,12 +730,9 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
               // if else statements to prevent counterTwo value of more than 2
               if (setting.clickCounter == 0) {
                 counterTwo++;
-                if (options2[0].value)
-                {
+                if (options2[0].value) {
                   logicGate = false;
-                }
-                else
-                {
+                } else {
                   logicGate = true;
                 }
               }
@@ -841,31 +830,33 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
     @required
         AgreeSetting
             setting, // object of AgreeSetting passed here, contains properties for widget
-  }) => Expanded(
-          child: Align(
-            child: Container(
-              width: 150,
-              child: CheckboxListTile(
-                value: setting.value,       // value of whether or not the checkbox is checked (true for checked, false for unchecked)
+  }) =>
+      Expanded(
+        child: Align(
+          child: Container(
+            width: 150,
+            child: CheckboxListTile(
+                value: setting
+                    .value, // value of whether or not the checkbox is checked (true for checked, false for unchecked)
                 contentPadding: const EdgeInsets.only(right: 10, left: 10),
                 controlAffinity: ListTileControlAffinity.leading,
                 title: Text("I Agree",
-                  style: TextStyle(
-                    fontFamily: "Be Vietnam",
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w600,
-                  )),
+                    style: TextStyle(
+                      fontFamily: "Be Vietnam",
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w600,
+                    )),
                 activeColor: Color.fromRGBO(8, 30, 63, 1.0),
                 onChanged: (value) => {
-                  setState(() {
-                    final newValue = !setting.value;
-                    setting.value = newValue;                       // either checks or unchecks the checkbox
-                  })
-                }
-              ),
-            ),
+                      setState(() {
+                        final newValue = !setting.value;
+                        setting.value =
+                            newValue; // either checks or unchecks the checkbox
+                      })
+                    }),
           ),
-        );
+        ),
+      );
 }
 
 class ButtonSetting {

@@ -3,6 +3,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
 import 'exposureConfirmPage.dart';
 import 'fetchFirebaseData.dart';
+import 'exposedListInfo.dart';
 
 class ExposureWelcomeScreen extends StatefulWidget {
   @override
@@ -10,6 +11,11 @@ class ExposureWelcomeScreen extends StatefulWidget {
 }
 
 class _ExposureWelcomeScreenState extends State<ExposureWelcomeScreen> {
+  List<ExposedUsers> exposedUser = [
+    ExposedUsers(userID: 'None', date: "3-23-2021", time: '14:24'),
+    ExposedUsers(userID: 'None', date: "2-03-2021", time: '09:37')
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,11 +66,12 @@ class _ExposureWelcomeScreenState extends State<ExposureWelcomeScreen> {
                           bool docExists = await checkDoc("initial");
                           print("Document exists in exposed collection = " +
                               docExists.toString());
-                          /* Navigator.push(
+                          //print(exposedUser.length);
+                          Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      ExposureConfirmation())); */
+                                      ExposureConfirmation()));
                         },
                         child: Text(
                           "I have tested POSITIVE and or showing symptoms of COVID-19 and would like to anonymously notify anyone that has been in contact with me in the last 14 days.",
@@ -105,11 +112,18 @@ class _ExposureWelcomeScreenState extends State<ExposureWelcomeScreen> {
                               child: Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: ListView.builder(
-                                    itemCount: 10,
+                                    itemCount: exposedUser.length,
                                     itemBuilder: (context, index) {
                                       return Card(
                                         child: ListTile(
-                                          title: Text('nice'),
+                                          // TODO format to be nicer, also fetch data
+                                          title: Text(
+                                            'Date: ' +
+                                                exposedUser[index].date +
+                                                "     ||     Time: " +
+                                                exposedUser[index].time,
+                                            style: TextStyle(fontSize: 16),
+                                          ),
                                         ),
                                       );
                                     },
