@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
 import 'package:dotted_border/dotted_border.dart';
 
@@ -16,6 +17,7 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
   Widget build(BuildContext context) {
     final FirebaseAuth auth = FirebaseAuth.instance;
     User user = auth.currentUser;
+    bool _initCheckbox = false;
 
     return Scaffold(
         appBar: AppBar(
@@ -100,14 +102,23 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
                           Center(
                             child: Container(
                               width: 220,
-                              child: CheckboxListTile(
-                                value: false,
-                                onChanged: null,
-                                title: Text(
-                                  "I Agree",
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                              ),
+                              child: StatefulBuilder(builder:
+                                  (BuildContext context, StateSetter setState) {
+                                return CheckboxListTile(
+                                  activeColor: AppTheme.Colors.blueFIU,
+                                  value: _initCheckbox,
+                                  onChanged: (bool value) {
+                                    setState(() {
+                                      _initCheckbox = value;
+                                    });
+                                  },
+                                  title: Text(
+                                    "I Agree",
+                                    style:
+                                        Theme.of(context).textTheme.bodyText1,
+                                  ),
+                                );
+                              }),
                             ),
                           )
                         ],
@@ -131,12 +142,34 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
                           color: Colors.white),
                     ),
                     onPressed: () {
-                      print(user);
+                      //print(user);
                       // TODO, on pressed, take authID and send to exposed_id collection.
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ExposureThankYouPage()));
+                      if (_initCheckbox != true) {
+                        print("Please select I agree");
+                        return showDialog(
+                            context: context,
+                            builder: (_) {
+                              return AlertDialog(
+                                  title: Text("Acknowlegements"),
+                                  content: Text(
+                                    "Please click the checkbox to agree and acknowlege that you have read this information.",
+                                  ),
+                                  actions: [
+                                    FlatButton(
+                                      // button to exit alert dialog
+                                      child: Text("Continue"),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    )
+                                  ]);
+                            });
+                      } else {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ExposureThankYouPage()));
+                      }
                       //TODO: Send UID with other docs to database
                     },
                     shape: RoundedRectangleBorder(

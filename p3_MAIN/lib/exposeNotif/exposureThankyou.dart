@@ -16,6 +16,8 @@ class ExposureThankYouPage extends StatelessWidget {
             ),
             onPressed: () {
               Navigator.pop(context);
+              Navigator.pop(context);
+              Navigator.pop(context);
             },
           ),
         ),
@@ -49,30 +51,6 @@ class ExposureThankYouPage extends StatelessWidget {
                           ),
                           onPressed: () {
                             Navigator.pushNamed(context, '/resources');
-                          },
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(25),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Container(
-                        width: 300,
-                        height: 50,
-                        child: RaisedButton(
-                          color: Colors.grey,
-                          child: Text(
-                            "Back to home",
-                            style: TextStyle(fontSize: 20, color: Colors.white),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                            // TODO add the other Navigator pop when the first page is added.
-                            // Navigator.pop(context);
                           },
                           shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(25),

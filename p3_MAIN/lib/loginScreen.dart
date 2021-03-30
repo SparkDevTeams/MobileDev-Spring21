@@ -34,8 +34,10 @@ class _LoginScreenState extends State<LoginScreen> {
               context,
               MaterialPageRoute(
                   builder: (BuildContext context) => HomeScreen(
-                      name: value.data()["first_name"],
-                      exposureId: value.data()["exposure_id"])));
+                        name: value.data()["first_name"],
+                        exposureId: value.data()["exposure_id"],
+                        lastName: value.data()["lastname"],
+                      )));
         });
       } catch (e) {
         print(e.message);

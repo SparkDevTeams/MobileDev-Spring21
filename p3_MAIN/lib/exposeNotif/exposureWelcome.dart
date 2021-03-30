@@ -62,11 +62,7 @@ class _ExposureWelcomeScreenState extends State<ExposureWelcomeScreen> {
                     height: 140,
                     width: 400,
                     child: RaisedButton(
-                        onPressed: () async {
-                          bool docExists = await checkDoc("initial");
-                          print("Document exists in exposed collection = " +
-                              docExists.toString());
-                          //print(exposedUser.length);
+                        onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
