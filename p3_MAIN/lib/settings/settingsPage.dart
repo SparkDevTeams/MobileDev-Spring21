@@ -217,6 +217,3 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 }
-
-// Was messing around trying to have the user logout. It does not log out the user but has them
-//go back to the login page

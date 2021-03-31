@@ -102,7 +102,7 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
                       child: Column(
                         children: [
                           Text(
-                            "By clicking this checkbox below and submitting, you acknowlege you have read this information and you will take the necessary steps to preserve the your safety and other’s safety.By clicking this box you acknowlege you have read this information and you will take the necessary steps to preserve the your safety and other’s safety.",
+                            "By clicking this checkbox below and submitting, you acknowlege you have read this information and you will take the necessary steps to preserve the your safety and other’s safety.",
                             style: Theme.of(context).textTheme.bodyText1,
                           ),
                           SizedBox(

@@ -5,6 +5,11 @@ import 'package:url_launcher/url_launcher.dart';
 import './resultsPageAUTHORIZED.dart';
 import './resultsPageUNAUTHORIZED.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import './databasewrite.dart';
+
 // Checklist page, with check boxes.
 class CheckListPageOne extends StatefulWidget {
   @override
@@ -343,6 +348,10 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
   Widget build(BuildContext context) {
     // The main screening checklist second page widget, with all the important
     // texts and shapes
+    //
+
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    User user = auth.currentUser;
 
     const FIUNavyBlue =
         const Color.fromRGBO(8, 30, 63, 1.0); // FIU's navy blue color.
@@ -638,6 +647,13 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                           currHour + ":" + currMin + " " + ending + " EST";
 
                       print(currDate + " at " + currHourAndMin);
+
+                      String exactDateTime;
+
+                      exactDateTime = currDate + "-" + currHourAndMin;
+
+                      SendDateTime(authID: user.uid)
+                          .sendDateTimeData(dateTime: exactDateTime);
 
                       //TODO: convert the time into EST time
 

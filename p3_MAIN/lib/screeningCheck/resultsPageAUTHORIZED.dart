@@ -17,20 +17,15 @@ class ResultsAUTHORIZED extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               // "Safety Screening Checklist" text.
               Container(
-                  alignment: Alignment.topCenter,
                   child: SizedBox(
-                    width: 315,
-                    child: Text('Safety Screening Checklist',
-                        style: TextStyle(
-                          color: FIUNavyBlue,
-                          fontFamily: "Be Vietnam",
-                          fontSize: 39,
-                          fontWeight: FontWeight.w800,
-                        )),
-                  )),
+                width: 315,
+                child: Text('Safety Screening Checklist',
+                    style: Theme.of(context).textTheme.headline1),
+              )),
               // Edged box in the center of the screen, contains AUTHORIZED / UNAUTHORIZED text.
               Expanded(
                 child: Align(
@@ -66,49 +61,48 @@ class ResultsAUTHORIZED extends StatelessWidget {
               // Contains the text the belong under the box, both bold and light font weight text.
               Container(
                   padding: EdgeInsets.only(top: 20),
-                  width: 315,
+                  width: 400,
                   alignment: Alignment.topCenter,
-                  child: RichText(
-                      text: TextSpan(
-                    style: TextStyle(
-                        fontFamily: "Be Vietnam",
-                        fontSize: 18.0,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text:
-                            'Remember these guidelines when you visit campus:\n',
-                      ),
-                      TextSpan(
+                  child: Center(
+                    child: RichText(
+                        text: TextSpan(
+                      style: TextStyle(
+                          fontFamily: "Be Vietnam",
+                          fontSize: 18.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
+                      children: <TextSpan>[
+                        TextSpan(
                           text:
-                              '1. Wear a face mask at ALL TIMES.\n2. Stay 6 ft. apart from others.\n3. Wash your hands and use hand sanitizer.\n4. Clean surfaces and equipment before use.',
-                          style: TextStyle(
-                              fontSize: 14.0,
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal))
-                    ],
-                  ))),
+                              'Remember these guidelines when you visit campus:\n',
+                        ),
+                        TextSpan(
+                            text:
+                                '1. Wear a face mask at ALL TIMES.\n2. Stay 6 ft. apart from others.\n3. Wash your hands and use hand sanitizer.\n4. Clean surfaces and equipment before use.',
+                            style: TextStyle(
+                                fontSize: 14.0,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal))
+                      ],
+                    )),
+                  )),
               // Home button.
-              Expanded(                                                                 // Added Expanded and Align widgets to fix home button
+              Expanded(
+                // Added Expanded and Align widgets to fix home button
                 child: Align(
-                  alignment: FractionalOffset.bottomCenter,
-                  child: Container(
-                    alignment: Alignment.bottomCenter,
-                    padding: const EdgeInsets.only(bottom: 33),
-                    child: RoundedButtons('Home', 18.0, 50.0, 200.0, FIUNavyBlue,
-                        Colors.white, 25.0, 
-                        () {
+                    alignment: FractionalOffset.bottomCenter,
+                    child: Container(
+                        alignment: Alignment.bottomCenter,
+                        padding: const EdgeInsets.only(bottom: 33),
+                        child: RoundedButtons('Home', 18.0, 50.0, 200.0,
+                            FIUNavyBlue, Colors.white, 25.0, () {
                           Navigator.pop(context);
                           print("pop 1");
                           Navigator.pop(context);
                           print("pop 2");
                           Navigator.pop(context);
                           print("You're now home.");
-                        }
-                      )
-                    )
-                ),
+                        }))),
               )
             ],
           ),
