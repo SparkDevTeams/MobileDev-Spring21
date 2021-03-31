@@ -110,15 +110,23 @@ class _ExposureWelcomeScreenState extends State<ExposureWelcomeScreen> {
                                   child: ListView.builder(
                                     itemCount: exposedUser.length,
                                     itemBuilder: (context, index) {
-                                      return Card(
-                                        child: ListTile(
-                                          // TODO format to be nicer, also fetch data
-                                          title: Text(
-                                            'Date: ' +
-                                                exposedUser[index].date +
-                                                "     ||     Time: " +
-                                                exposedUser[index].time,
-                                            style: TextStyle(fontSize: 16),
+                                      return Padding(
+                                        padding: const EdgeInsets.only(top: 10),
+                                        child: DottedBorder(
+                                          dashPattern: [3, 2],
+                                          color: AppTheme.Colors.blueFIU,
+                                          strokeWidth: 2,
+                                          borderType: BorderType.RRect,
+                                          radius: Radius.circular(15),
+                                          child: ListTile(
+                                            // TODO format to be nicer, also fetch data
+                                            title: Text(
+                                              'Date: ' +
+                                                  exposedUser[index].date +
+                                                  "     ||     Time: " +
+                                                  exposedUser[index].time,
+                                              style: TextStyle(fontSize: 16),
+                                            ),
                                           ),
                                         ),
                                       );

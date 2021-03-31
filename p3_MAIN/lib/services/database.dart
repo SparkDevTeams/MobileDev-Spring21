@@ -25,4 +25,9 @@ class DatabaseService {
       'last_exposure_date': lastExposureDate
     });
   }
+
+Future ScanExposedDoc {
+  
+}
+
 }
