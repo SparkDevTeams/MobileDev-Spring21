@@ -6,18 +6,27 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'exposureThankyou.dart';
+import 'databaseFunction.dart';
 
 class ExposureConfirmation extends StatefulWidget {
+  final String exposureID;
+
+  const ExposureConfirmation({Key key, this.exposureID}) : super(key: key);
+
   @override
   _ExposureConfirmationState createState() => _ExposureConfirmationState();
 }
 
 class _ExposureConfirmationState extends State<ExposureConfirmation> {
+  final CollectionReference userDataCollection =
+      FirebaseFirestore.instance.collection('exposed_id');
+
   @override
   Widget build(BuildContext context) {
     final FirebaseAuth auth = FirebaseAuth.instance;
     User user = auth.currentUser;
     bool _initCheckbox = false;
+    String _exposureID = widget.exposureID;
 
     return Scaffold(
         appBar: AppBar(
@@ -142,7 +151,7 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
                           color: Colors.white),
                     ),
                     onPressed: () {
-                      //print(user);
+                      print(user.uid);
                       // TODO, on pressed, take authID and send to exposed_id collection.
                       if (_initCheckbox != true) {
                         print("Please select I agree");
@@ -165,6 +174,9 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
                                   ]);
                             });
                       } else {
+                        // TODO push exposure ID to the document
+                        DatabaseService(authID: user.uid)
+                            .sendexposure(exposureID: "Exposed");
                         Navigator.push(
                             context,
                             MaterialPageRoute(
