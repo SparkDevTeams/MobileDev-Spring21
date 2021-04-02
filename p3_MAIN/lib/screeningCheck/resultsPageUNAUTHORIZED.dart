@@ -63,6 +63,7 @@ class ResultsUNAUTHORIZED extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(25.0),
                             child: Container(
+                              width: 315,
                               alignment: Alignment.center,
                               child: Text(
                                 "You are NOT AUTHORIZED to go on campus. Please stay home.",

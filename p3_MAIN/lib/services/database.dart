@@ -26,8 +26,6 @@ class DatabaseService {
     });
   }
 
-Future ScanExposedDoc {
-  
-}
-
+  // INPUT FOR FUNCTION BELOW IS A LIST OF STRINGS OF DOC IDS READ FROM MEMORY
+  Future scanExposedDoc() {}
 }
