@@ -4,7 +4,6 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:url_launcher/url_launcher.dart';
 import './resultsPageAUTHORIZED.dart';
 import './resultsPageUNAUTHORIZED.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -224,15 +223,13 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
               // unchecks the no symptoms checkbox when a symptom checkbox is checked
               counter--;
               print(counter.toString());
-              noSymptoms.value = false;
             }
 
             // otherwise, make sure no symptoms checkbox is unchecked when a symptom checkbox is checked
             else {
               counter++;
               print(counter.toString());
-              final allow = symptoms.every((setting) => setting.value);
-              noSymptoms.value = allow;
+              noSymptoms.value = false;
             }
           });
         },
