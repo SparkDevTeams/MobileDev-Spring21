@@ -11,13 +11,16 @@ class SettingsPage extends StatefulWidget {
   final String firstname, lastname;
   const SettingsPage({Key key, this.firstname, this.lastname})
       : super(key: key);
-  
 
   @override
   _SettingsPageState createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  var _value1 = false;
+  var _value2 = false;
+  var _value3 = false;
+
   bool _faceIdValue = false;
   final languageButtons = [
     // yes and no options for first question
@@ -139,6 +142,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 buildLanguageButton(languageButtons[0]),
                 SizedBox(width: 21),
@@ -146,26 +150,6 @@ class _SettingsPageState extends State<SettingsPage> {
                 SizedBox(width: 21),
                 buildLanguageButton(languageButtons[2]),
               ],
-            ),
-            SizedBox(height: 20),
-            Container(
-              child: StatefulBuilder(
-                  builder: (BuildContext context, StateSetter setState) {
-                return CheckboxListTile(
-                  activeColor: AppTheme.Colors.blueFIU,
-                  value: _faceIdValue,
-                  onChanged: (bool value) {
-                    setState(() {
-                      _faceIdValue = value;
-                      print(user.uid);
-                    });
-                  },
-                  title: Text(
-                    "Face ID",
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                );
-              }),
             ),
             SizedBox(
               height: 20,
@@ -175,7 +159,7 @@ class _SettingsPageState extends State<SettingsPage> {
               style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
             ),
             SizedBox(height: 10),
-            Text(
+            /* Text(
               "Notify Instructors?",
               style: new TextStyle(
                   fontSize: 22, decoration: TextDecoration.underline),
@@ -186,7 +170,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
             SizedBox(height: 10),
             Row(
-              children: <Widget> [
+              children: <Widget>[
                 buildOnOffButton(onOffOne[0]),
                 SizedBox(width: 40),
                 buildOnOffButton(onOffOne[1])
@@ -197,14 +181,70 @@ class _SettingsPageState extends State<SettingsPage> {
               "Get Screening\nReminders?",
               style: new TextStyle(
                   fontSize: 20, decoration: TextDecoration.underline),
-            ),
+            ), 
             SizedBox(height: 10),
             Row(
-              children: <Widget> [
+              children: <Widget>[
                 buildOnOffButton(onOffTwo[0]),
                 SizedBox(width: 40),
                 buildOnOffButton(onOffTwo[1])
               ],
+            ),
+            */
+
+            CheckboxListTile(
+              value: _value1,
+              checkColor: Colors.white,
+              activeColor: Color.fromRGBO(8, 30, 63, 1.0),
+              onChanged: (value) {
+                setState(() {
+                  _value1 = value;
+                });
+              },
+              title: Text(
+                "Face ID",
+                style: new TextStyle(
+                    fontSize: 22, decoration: TextDecoration.underline),
+              ),
+            ),
+            SizedBox(height: 2),
+            CheckboxListTile(
+              value: _value2,
+              checkColor: Colors.white,
+              activeColor: Color.fromRGBO(8, 30, 63, 1.0),
+              onChanged: (value) {
+                setState(() {
+                  _value2 = value;
+                });
+              },
+              title: Text(
+                "Get Screening Reminders",
+                style: new TextStyle(
+                    fontSize: 22, decoration: TextDecoration.underline),
+              ),
+            ),
+            SizedBox(height: 5),
+            CheckboxListTile(
+              value: _value3,
+              checkColor: Colors.white,
+              activeColor: Color.fromRGBO(8, 30, 63, 1.0),
+              onChanged: (value) {
+                setState(() {
+                  _value3 = value;
+                });
+              },
+              title: Text(
+                "Notify Instructors",
+                style: new TextStyle(
+                    fontSize: 22, decoration: TextDecoration.underline),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 15, right: 15),
+              child: Text(
+                "The COVID Response Team will only notify instructors if the student has recieved a RED on their safety screening. It is the student’s responsibilility to follow up with the instructor regardless of screening outcome.",
+                style: Theme.of(context).textTheme.bodyText1,
+              ),
             ),
             SizedBox(height: 40),
             Center(
@@ -237,10 +277,8 @@ class _SettingsPageState extends State<SettingsPage> {
       setting: setting,
       onClicked: () {
         setState(() {
-          if (setting.id == 1)
-          {
-            if (setting.text == 'On')
-            {
+          if (setting.id == 1) {
+            if (setting.text == 'On') {
               setting.value = true;
               setting.colorText = Colors.white;
               setting.colorBackground = Color.fromRGBO(8, 30, 63, 1.0);
@@ -248,10 +286,7 @@ class _SettingsPageState extends State<SettingsPage> {
               onOffOne[1].value = false;
               onOffOne[1].colorText = Color.fromRGBO(8, 30, 63, 1.0);
               onOffOne[1].colorBackground = Colors.white;
-            }
-
-            else 
-            {
+            } else {
               setting.value = true;
               setting.colorText = Colors.white;
               setting.colorBackground = Color.fromRGBO(8, 30, 63, 1.0);
@@ -260,12 +295,8 @@ class _SettingsPageState extends State<SettingsPage> {
               onOffOne[0].colorText = Color.fromRGBO(8, 30, 63, 1.0);
               onOffOne[0].colorBackground = Colors.white;
             }
-          }
-
-          else
-          {
-            if (setting.text == 'On')
-            {
+          } else {
+            if (setting.text == 'On') {
               setting.value = true;
               setting.colorText = Colors.white;
               setting.colorBackground = Color.fromRGBO(8, 30, 63, 1.0);
@@ -273,10 +304,7 @@ class _SettingsPageState extends State<SettingsPage> {
               onOffTwo[1].value = false;
               onOffTwo[1].colorText = Color.fromRGBO(8, 30, 63, 1.0);
               onOffTwo[1].colorBackground = Colors.white;
-            }
-
-            else 
-            {
+            } else {
               setting.value = true;
               setting.colorText = Colors.white;
               setting.colorBackground = Color.fromRGBO(8, 30, 63, 1.0);
@@ -295,8 +323,7 @@ class _SettingsPageState extends State<SettingsPage> {
       setting: setting,
       onClicked: () {
         setState(() {
-          if (setting.id == 1)
-          {
+          if (setting.id == 1) {
             setting.colorText = Colors.white;
             setting.colorBackground = Color.fromRGBO(8, 30, 63, 1.0);
             setting.value = true;
@@ -308,10 +335,7 @@ class _SettingsPageState extends State<SettingsPage> {
             languageButtons[2].colorText = Color.fromRGBO(8, 30, 63, 1.0);
             languageButtons[2].colorBackground = Colors.white;
             languageButtons[2].value = false;
-          }
-
-          else if (setting.id == 2)
-          {
+          } else if (setting.id == 2) {
             setting.colorText = Colors.white;
             setting.colorBackground = Color.fromRGBO(8, 30, 63, 1.0);
             setting.value = true;
@@ -323,10 +347,7 @@ class _SettingsPageState extends State<SettingsPage> {
             languageButtons[2].colorText = Color.fromRGBO(8, 30, 63, 1.0);
             languageButtons[2].colorBackground = Colors.white;
             languageButtons[2].value = false;
-          }
-
-          else if (setting.id == 3)
-          {
+          } else if (setting.id == 3) {
             setting.colorText = Colors.white;
             setting.colorBackground = Color.fromRGBO(8, 30, 63, 1.0);
             setting.value = true;
@@ -410,15 +431,16 @@ class ButtonSetting {
   double fontSize; // size of font
   int id; // id
 
-  ButtonSetting(
-      {@required this.text,
-      @required this.height,
-      @required this.width,
-      @required this.colorBackground,
-      @required this.colorText,
-      @required this.value,
-      @required this.id,
-      this.colorBorder = const Color.fromRGBO(8, 30, 63, 1.0),
-      this.circularRadius = 30.0,
-      this.fontSize = 17.0,});
+  ButtonSetting({
+    @required this.text,
+    @required this.height,
+    @required this.width,
+    @required this.colorBackground,
+    @required this.colorText,
+    @required this.value,
+    @required this.id,
+    this.colorBorder = const Color.fromRGBO(8, 30, 63, 1.0),
+    this.circularRadius = 30.0,
+    this.fontSize = 17.0,
+  });
 }

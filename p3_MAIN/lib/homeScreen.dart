@@ -225,7 +225,7 @@ class HomePageButton extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Icon(
                     Icons.ac_unit,
-                    size: 1.0,
+                    size: 120,
                   )),
               // TODO: Import image assets for each icon...
             ),
