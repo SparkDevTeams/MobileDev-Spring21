@@ -50,7 +50,7 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
                 Text("Exposure Notifications",
                     style: Theme.of(context).textTheme.headline1),
                 Text(
-                    "Before you submit please make sure you are sure that you are experiencing symptoms and or tested positive within the last two weeks.",
+                    "Before you submit please make sure you are sure that you are experiencing symptoms and/or tested positive within the last two weeks.",
                     style: Theme.of(context).textTheme.bodyText1),
                 SizedBox(
                   height: 20,

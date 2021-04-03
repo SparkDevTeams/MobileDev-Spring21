@@ -127,8 +127,12 @@ class _SettingsPageState extends State<SettingsPage> {
               width: 400,
               height: 50,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25), color: Colors.amber),
-              child: Text("Logged in as: $firstname $lastname"),
+                  borderRadius: BorderRadius.circular(25),
+                  color: AppTheme.Colors.blueFIU),
+              child: Text(
+                "Logged in as: $firstname $lastname",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             SizedBox(
               height: 10,

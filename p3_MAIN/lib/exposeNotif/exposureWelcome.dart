@@ -40,7 +40,7 @@ class _ExposureWelcomeScreenState extends State<ExposureWelcomeScreen> {
             Text("Exposure Notifications",
                 style: Theme.of(context).textTheme.headline1),
             Text(
-              "In this tab, you will find your history of potential contact with people on campus who have tested positive for Covid-19 in the past two days.",
+              "In this tab, you will find your history of potential contact with people on campus who have tested positive for COVID-19 in the past two days.",
               style: Theme.of(context).textTheme.bodyText1,
             ),
             Padding(
@@ -70,7 +70,7 @@ class _ExposureWelcomeScreenState extends State<ExposureWelcomeScreen> {
                                       ExposureConfirmation()));
                         },
                         child: Text(
-                          "I have tested POSITIVE and or showing symptoms of COVID-19 and would like to anonymously notify anyone that has been in contact with me in the last 14 days.",
+                          "I have tested POSITIVE and/or showing symptoms of COVID-19, and I would like to anonymously notify anyone that has been in contact with me in the last 14 days.",
                           style: TextStyle(fontSize: 16, color: Colors.white),
                         ),
                         color: AppTheme.Colors.magentaFIU,
