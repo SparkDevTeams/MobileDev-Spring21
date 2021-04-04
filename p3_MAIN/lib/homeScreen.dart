@@ -1,12 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:p3_MAIN/exposeNotif/exposureConfirmPage.dart';
 import 'package:p3_MAIN/theme/colors.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
+import './services/database.dart';
 //import 'package:p3_MAIN/theme/themeData.dart';
 import './exposeNotif/exposureWelcome.dart';
 import './settings/settingsPage.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
   final String name;
   final String exposureId;
   final String lastName;
@@ -14,6 +17,35 @@ class HomeScreen extends StatelessWidget {
 
   HomeScreen({this.name, this.exposureId, this.lastName});
 
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final stringList = ["Hello", "exposeduser1", "Hi", "FSJVBSV", "SFSVSK"];
+
+  Future<void> detectDoc(String documentList) async {
+    var a = await FirebaseFirestore.instance
+        .collection("exposed_id")
+        .doc(documentList)
+        .get();
+    if (a.exists == false) {
+      print("document does not exists");
+    } else {
+      print("Document exists");
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    for (var element in stringList) {
+      detectDoc(element);
+      // TODO if any document true exists, show pop up on startup that redirects to exposure notification page
+    }
+  }
+
+  String documentName = "exposeduser1";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                 icon: Icon(Icons.bluetooth),
                 splashRadius: 25,
                 color: AppTheme.Colors.blueFIU,
-                onPressed: null),
+                onPressed: () async {}),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -36,8 +68,8 @@ class HomeScreen extends StatelessWidget {
               color: AppTheme.Colors.blueFIU,
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        SettingsPage(firstname: name, lastname: lastName)));
+                    builder: (context) => SettingsPage(
+                        firstname: widget.name, lastname: widget.lastName)));
               },
             ),
           ),
@@ -58,7 +90,7 @@ class HomeScreen extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Hello, $name",
+                    "Hello, ${widget.name}",
                     style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
