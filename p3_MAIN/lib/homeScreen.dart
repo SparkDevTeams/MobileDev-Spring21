@@ -1,15 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:p3_MAIN/exposeNotif/exposureConfirmPage.dart';
 import 'package:p3_MAIN/theme/colors.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
-import './services/database.dart';
 //import 'package:p3_MAIN/theme/themeData.dart';
 import './exposeNotif/exposureWelcome.dart';
 import './settings/settingsPage.dart';
 
-class HomeScreen extends StatefulWidget {
-  @override
+class HomeScreen extends StatelessWidget {
   final String name;
   final String exposureId;
   final String lastName;
@@ -62,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icon(Icons.bluetooth),
                 splashRadius: 25,
                 color: AppTheme.Colors.blueFIU,
-                onPressed: () async {}),
+                onPressed: null),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -72,8 +69,8 @@ class _HomeScreenState extends State<HomeScreen> {
               color: AppTheme.Colors.blueFIU,
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => SettingsPage(
-                        firstname: widget.name, lastname: widget.lastName)));
+                    builder: (context) =>
+                        SettingsPage(firstname: name, lastname: lastName)));
               },
             ),
           ),
@@ -94,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Hello, ${widget.name}",
+                    "Hello, $name",
                     style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
@@ -111,13 +108,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       "Screening Checklist",
                       "Please fill this out before coming on campus! This checklist will determine if you are cleared to go on campus or not.",
                       '/checklist_p1',
-                      170.0),
+                      170.0,
+                      Icons.check_circle_outline),
                 ),
                 Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: Container(
                       width: 500,
-                      height: 150,
+                      height: 170,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(25)),
@@ -146,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       //color: Colors.amber,
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "View your history of exposures of COVID-19 or submit a positive test alert.",
+                                        "View your history of exposers of COVID-19 or submit a positive test alert.",
                                         style: TextStyle(
                                           color: AppTheme.Colors.blueFIU,
                                           fontSize: 13,
@@ -157,13 +155,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                             ),
+                            SizedBox(
+                              width: 20,
+                            ),
                             Container(
                               alignment: Alignment.centerLeft,
                               child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Icon(
-                                    Icons.ac_unit,
-                                    size: 1.0,
+                                    Icons.warning_rounded,
+                                    size: 120.0,
+                                    color: AppTheme.Colors.blueFIU,
                                   )),
                               // TODO: Import image assets for each icon...
                             ),
@@ -184,7 +186,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       "COVID-19 Resources",
                       "Do you need resources to assist you during this time? Click here.",
                       '/resources',
-                      150.0),
+                      150.0,
+                      Icons.info_outline),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
@@ -192,7 +195,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       "On Campus Guidelines",
                       "Please read these listed guidelines before coming on campus.",
                       '/guidelines',
-                      150.0),
+                      150.0,
+                      Icons.format_list_bulleted_sharp),
                 ),
                 SizedBox(
                   height: 50,
@@ -207,9 +211,10 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class HomePageButton extends StatelessWidget {
-  final title, subheading, routeName, height;
+  final title, subheading, routeName, height, icon;
 
-  HomePageButton(this.title, this.subheading, this.routeName, this.height);
+  HomePageButton(
+      this.title, this.subheading, this.routeName, this.height, this.icon);
 
   @override
   Widget build(BuildContext context) {
@@ -255,15 +260,18 @@ class HomePageButton extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(
+              width: 20,
+            ),
             Container(
               alignment: Alignment.centerLeft,
               child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Icon(
-                    Icons.ac_unit,
-                    size: 1,
+                    this.icon,
+                    size: 120.0,
+                    color: AppTheme.Colors.blueFIU,
                   )),
-              // TODO: Import image assets for each icon...
             ),
           ],
         ),
@@ -275,25 +283,3 @@ class HomePageButton extends StatelessWidget {
   }
 }
 // TODO: We need to pass Exposure ID into exposure notifications.
-
-Widget _buildPopupDialog(BuildContext context) {
-  return new AlertDialog(
-    title: const Text('Popup example'),
-    content: new Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text("Hello"),
-      ],
-    ),
-    actions: <Widget>[
-      new FlatButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        textColor: Theme.of(context).primaryColor,
-        child: const Text('Close'),
-      ),
-    ],
-  );
-}
