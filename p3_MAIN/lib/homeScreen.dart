@@ -5,8 +5,10 @@ import 'package:p3_MAIN/theme/themeData.dart';
 //import 'package:p3_MAIN/theme/themeData.dart';
 import './exposeNotif/exposureWelcome.dart';
 import './settings/settingsPage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   final String name;
   final String exposureId;
   final String lastName;
@@ -69,8 +71,8 @@ class _HomeScreenState extends State<HomeScreen> {
               color: AppTheme.Colors.blueFIU,
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        SettingsPage(firstname: name, lastname: lastName)));
+                    builder: (context) => SettingsPage(
+                        firstname: widget.name, lastname: widget.lastName)));
               },
             ),
           ),
@@ -91,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Hello, $name",
+                    "Hello, " + widget.name,
                     style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
