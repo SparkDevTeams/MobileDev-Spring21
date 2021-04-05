@@ -3,71 +3,112 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:p3_MAIN/UIWidgets/ButtonWidgets.dart';
 import 'package:p3_MAIN/theme/themeData.dart';
 
-class ResourcesPage extends StatelessWidget {
-  _launchURL(website) async {
-    String url = '';
-    if (website == ('0')) {
-      url = 'https://repopulation.fiu.edu/';
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    }
-    if (website == ('1')) {
-      url = 'https://www.cdc.gov/';
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    } else if (website == ('2')) {
-      url = 'https://www3.dadeschools.net/home';
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    } else if (website == ('3')) {
-      url = 'https://www.browardschools.com/';
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    } else if (website == ('4')) {
-      url =
-          'https://www.miamidade.gov/global/initiatives/coronavirus/home.page';
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    } else if (website == ('5')) {
-      url =
-          'https://www.miamigov.com/Government/Stand-Up-Miami-Covid-and-Recovery';
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    } else if (website == ('6')) {
-      url = 'https://www.broward.org/coronavirus/Pages/default.aspx';
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
-    } else if (website == ('7')) {
-      url = 'https://floridahealthcovid19.gov/';
-      if (await canLaunch(url)) {
-        await launch(url);
-      } else {
-        throw 'Could not launch $url';
-      }
+launchURL(website) async {
+  String url = '';
+  if (website == ('0')) {
+    url = 'https://repopulation.fiu.edu/';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
     }
   }
+  if (website == ('1')) {
+    url = 'https://www.cdc.gov/';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  } else if (website == ('2')) {
+    url = 'https://www3.dadeschools.net/home';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  } else if (website == ('3')) {
+    url = 'https://www.browardschools.com/';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  } else if (website == ('4')) {
+    url = 'https://www.miamidade.gov/global/initiatives/coronavirus/home.page';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  } else if (website == ('5')) {
+    url =
+        'https://www.miamigov.com/Government/Stand-Up-Miami-Covid-and-Recovery';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  } else if (website == ('6')) {
+    url = 'https://www.broward.org/coronavirus/Pages/default.aspx';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  } else if (website == ('7')) {
+    url = 'https://floridahealthcovid19.gov/';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+  if (website == ('VaccineFinder')) {
+    url = 'https://vaccinefinder.org/search/';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+  if (website == ('CDCVax')) {
+    url = 'https://www.cdc.gov/coronavirus/2019-ncov/vaccines/index.html';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+  if (website == ('Pfizer')) {
+    url =
+        'https://www.pfizer.com/news/hot-topics/the_facts_about_pfizer_and_biontech_s_covid_19_vaccine';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+  if (website == ('Moderna')) {
+    url =
+        'https://www.modernatx.com/covid19vaccine-eua/providers/about-vaccine';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+  if (website == ('Johnson')) {
+    url = 'https://www.jnj.com/covid-19/prevention';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+}
 
+class ResourcesPage extends StatelessWidget {
   const ResourcesPage({Key key}) : super(key: key);
 
   @override
@@ -104,7 +145,7 @@ class ResourcesPage extends StatelessWidget {
                   height: 130,
                   width: 400,
                   child: RaisedButton(
-                    onPressed: () => _launchURL('0'),
+                    onPressed: () => launchURL('0'),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25)),
                     child: Padding(
@@ -131,13 +172,99 @@ class ResourcesPage extends StatelessWidget {
                     ),
                   )),
               Container(padding: const EdgeInsets.only(top: 10, bottom: 10)),
-              Text("External resources",
+              Text(
+                "Vaccine Information",
+                style: Theme.of(context).textTheme.headline1,
+              ),
+              Container(padding: const EdgeInsets.only(top: 5, bottom: 5)),
+              Container(
+                  width: 400,
+                  child: RaisedButton(
+                    onPressed: () => launchURL('VaccineFinder'),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Vaccine Finder",
+                            style: new TextStyle(
+                                fontSize: 18, color: AppTheme.Colors.blueFIU),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "This website will give you information to which vaccine sites have stock of the COVID-19 vaccine. You can input your location and vaccine preference and it will directly tell you where it is and how you can get it.",
+                            style: new TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w400),
+                          )
+                        ],
+                      ),
+                    ),
+                  )),
+              Container(padding: const EdgeInsets.only(top: 10, bottom: 10)),
+              Container(
+                  width: 400,
+                  child: RaisedButton(
+                    onPressed: () => launchURL('VaccineFinder'),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "CDC Information on Vaccines",
+                            style: new TextStyle(
+                                fontSize: 18, color: AppTheme.Colors.blueFIU),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "This CDC website is a hub of information on the current efforts and data pertaining to the vaccination effort.",
+                            style: new TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.w400),
+                          )
+                        ],
+                      ),
+                    ),
+                  )),
+              Container(padding: const EdgeInsets.only(top: 10, bottom: 10)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  RowButton(
+                    vaccineName: "Pfizer",
+                    url: 'Pfizer',
+                    type: "mRNA",
+                  ),
+                  RowButton(
+                    vaccineName: "Moderna",
+                    url: "Moderna",
+                    type: "mRNA",
+                  ),
+                  RowButton(
+                    vaccineName: "J&J",
+                    url: "Johnson",
+                    type: "Adenovirus",
+                  )
+                ],
+              ),
+              Container(padding: const EdgeInsets.only(top: 10, bottom: 10)),
+              Text("Other resources",
                   style: Theme.of(context).textTheme.headline1),
               Text(
                 "We have also provided non-FIU resources in case you need any type of information that FIU may not have.",
                 style: Theme.of(context).textTheme.bodyText1,
               ),
-              Container(padding: const EdgeInsets.only(top: 10, bottom: 10)),
+              Container(padding: const EdgeInsets.only(top: 5, bottom: 5)),
               Container(
                   child: RoundedButtons(
                 "CDC Website",
@@ -147,7 +274,7 @@ class ResourcesPage extends StatelessWidget {
                 Color.fromRGBO(8, 30, 63, 1.0),
                 Colors.white,
                 25.0,
-                () => _launchURL('1'),
+                () => launchURL('1'),
               )),
               Container(padding: const EdgeInsets.only(top: 5, bottom: 5)),
               Container(
@@ -159,7 +286,7 @@ class ResourcesPage extends StatelessWidget {
                 Color.fromRGBO(8, 30, 63, 1.0),
                 Colors.white,
                 25.0,
-                () => _launchURL('2'),
+                () => launchURL('2'),
               )),
               Container(padding: const EdgeInsets.only(top: 5, bottom: 5)),
               Container(
@@ -171,7 +298,7 @@ class ResourcesPage extends StatelessWidget {
                 Color.fromRGBO(8, 30, 63, 1.0),
                 Colors.white,
                 25.0,
-                () => _launchURL('3'),
+                () => launchURL('3'),
               )),
               Container(padding: const EdgeInsets.only(top: 5, bottom: 5)),
               Container(
@@ -183,7 +310,7 @@ class ResourcesPage extends StatelessWidget {
                 Color.fromRGBO(8, 30, 63, 1.0),
                 Colors.white,
                 25.0,
-                () => _launchURL('4'),
+                () => launchURL('4'),
               )),
               Container(padding: const EdgeInsets.only(top: 5, bottom: 5)),
               Container(
@@ -195,7 +322,7 @@ class ResourcesPage extends StatelessWidget {
                 Color.fromRGBO(8, 30, 63, 1.0),
                 Colors.white,
                 25.0,
-                () => _launchURL('5'),
+                () => launchURL('5'),
               )),
               Container(padding: const EdgeInsets.only(top: 5, bottom: 5)),
               Container(
@@ -207,7 +334,7 @@ class ResourcesPage extends StatelessWidget {
                 Color.fromRGBO(8, 30, 63, 1.0),
                 Colors.white,
                 25.0,
-                () => _launchURL('6'),
+                () => launchURL('6'),
               )),
               Container(padding: const EdgeInsets.only(top: 5, bottom: 5)),
               Container(
@@ -219,10 +346,43 @@ class ResourcesPage extends StatelessWidget {
                 Color.fromRGBO(8, 30, 63, 1.0),
                 Colors.white,
                 25.0,
-                () => _launchURL('7'),
+                () => launchURL('7'),
               )),
               Container(padding: const EdgeInsets.only(top: 25, bottom: 25)),
             ], crossAxisAlignment: CrossAxisAlignment.start),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class RowButton extends StatelessWidget {
+  String vaccineName;
+  String url;
+  String type;
+  RowButton({this.vaccineName, this.url, this.type});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      //width: 110,
+      height: 70,
+      child: RaisedButton(
+        onPressed: () => launchURL('$url'),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        child: Padding(
+          padding: const EdgeInsets.all(6.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("$vaccineName",
+                  style: new TextStyle(
+                      fontSize: 18, color: AppTheme.Colors.blueFIU)),
+              Text("$type",
+                  style:
+                      new TextStyle(fontSize: 13, fontWeight: FontWeight.w400))
+            ],
           ),
         ),
       ),
