@@ -122,6 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(25)),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Container(
                               width: 170,
@@ -156,9 +157,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ],
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 20,
                             ),
                             Container(
                               alignment: Alignment.centerLeft,
@@ -227,6 +225,7 @@ class HomePageButton extends StatelessWidget {
         shape:
             RoundedRectangleBorder(borderRadius: new BorderRadius.circular(25)),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
               width: 170,
@@ -261,9 +260,6 @@ class HomePageButton extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            SizedBox(
-              width: 20,
             ),
             Container(
               alignment: Alignment.centerLeft,
