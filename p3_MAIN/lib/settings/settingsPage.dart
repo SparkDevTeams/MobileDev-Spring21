@@ -197,6 +197,7 @@ class _SettingsPageState extends State<SettingsPage> {
             */
 
             CheckboxListTile(
+              contentPadding: const EdgeInsets.only(right: 0),
               value: _value1,
               checkColor: Colors.white,
               activeColor: Color.fromRGBO(8, 30, 63, 1.0),
@@ -208,11 +209,12 @@ class _SettingsPageState extends State<SettingsPage> {
               title: Text(
                 "Face ID",
                 style: new TextStyle(
-                    fontSize: 22, decoration: TextDecoration.underline),
+                    fontSize: 18, decoration: TextDecoration.underline),
               ),
             ),
             SizedBox(height: 2),
             CheckboxListTile(
+              contentPadding: const EdgeInsets.only(right: 0),
               value: _value2,
               checkColor: Colors.white,
               activeColor: Color.fromRGBO(8, 30, 63, 1.0),
@@ -224,11 +226,12 @@ class _SettingsPageState extends State<SettingsPage> {
               title: Text(
                 "Get Screening Reminders",
                 style: new TextStyle(
-                    fontSize: 22, decoration: TextDecoration.underline),
+                    fontSize: 18, decoration: TextDecoration.underline),
               ),
             ),
             SizedBox(height: 5),
             CheckboxListTile(
+              contentPadding: const EdgeInsets.only(right: 0),
               value: _value3,
               checkColor: Colors.white,
               activeColor: Color.fromRGBO(8, 30, 63, 1.0),
@@ -240,31 +243,33 @@ class _SettingsPageState extends State<SettingsPage> {
               title: Text(
                 "Notify Instructors",
                 style: new TextStyle(
-                    fontSize: 22, decoration: TextDecoration.underline),
+                    fontSize: 18, decoration: TextDecoration.underline),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Text(
-                "The COVID Response Team will only notify instructors if the student has recieved a RED on their safety screening. It is the student’s responsibilility to follow up with the instructor regardless of screening outcome.",
-                style: Theme.of(context).textTheme.bodyText1,
+            Container(
+              width: 310,
+              child: Padding(
+                padding: const EdgeInsets.only(),
+                child: Text(
+                  "The COVID Response Team will only notify instructors if the student has recieved a RED on their safety screening. It is the student’s responsibilility to follow up with the instructor regardless of screening outcome.",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
               ),
             ),
             SizedBox(height: 40),
             Center(
-              child: RaisedButton(
-                  color: Color.fromRGBO(8, 30, 63, 1.0),
-                  child: Text(
-                    "Log Out",
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                  onPressed: () async {
-                    print(FirebaseAuth.instance.currentUser);
-                    await FirebaseAuth.instance.signOut();
-                    print("Signed user out.");
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, '/login', (route) => false);
-                  }),
+              child: Container(
+                  alignment: Alignment.topCenter,
+                  child: RoundedButtons('Log out', 18.0, 50.0, 200.0,
+                      Color.fromRGBO(8, 30, 63, 1.0), Colors.white, 25.0, () async {
+                        print(FirebaseAuth.instance.currentUser);
+                        await FirebaseAuth.instance.signOut();
+                        print("Signed user out.");
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, '/login', (route) => false);
+                      }
+                  )
+              )
             ),
             SizedBox(
               height: 40,

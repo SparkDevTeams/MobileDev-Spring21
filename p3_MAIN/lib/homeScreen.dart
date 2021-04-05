@@ -166,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Icon(
                                     Icons.warning_rounded,
-                                    size: 120.0,
+                                    size: 100.0,
                                     color: AppTheme.Colors.blueFIU,
                                   )),
                               // TODO: Import image assets for each icon...
@@ -271,7 +271,7 @@ class HomePageButton extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Icon(
                     this.icon,
-                    size: 120.0,
+                    size: 100.0,
                     color: AppTheme.Colors.blueFIU,
                   )),
             ),
