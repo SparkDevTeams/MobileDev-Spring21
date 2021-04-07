@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.only(top: 15),
                     child: Container(
                       width: 500,
-                      height: 170,
+                      height: 150,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(25)),

@@ -210,7 +210,7 @@ class ResourcesPage extends StatelessWidget {
               Container(
                   width: 400,
                   child: RaisedButton(
-                    onPressed: () => launchURL('VaccineFinder'),
+                    onPressed: () => launchURL('CDCVax'),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25)),
                     child: Padding(
@@ -238,7 +238,7 @@ class ResourcesPage extends StatelessWidget {
                   )),
               Container(padding: const EdgeInsets.only(top: 10, bottom: 10)),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   RowButton(
                     vaccineName: "Pfizer",
