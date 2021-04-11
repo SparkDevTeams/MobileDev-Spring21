@@ -115,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Icons.person,
                               color: Colors.grey,
                             ),
-                            hintText: "Panther ID",
+                            hintText: "Email Address",
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20.0),
                               borderSide: BorderSide(),

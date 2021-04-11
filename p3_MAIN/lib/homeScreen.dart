@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: HomePageButton(
                       //TODO: PASS in the AuthID to this
                       "Screening Checklist",
-                      "Please fill this out before coming on campus! This checklist will determine if you are cleared to go on campus or not.",
+                      "Please fill this out before coming on campus! This checklist will determine if you are cleared to go on campus.",
                       '/checklist_p1',
                       170.0,
                       Icons.check_circle_outline),
@@ -147,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       //color: Colors.amber,
                                       alignment: Alignment.centerLeft,
                                       child: Text(
-                                        "View your history of exposers of COVID-19 or submit a positive test alert.",
+                                        "View your history of exposures of COVID-19 or submit a positive test alert.",
                                         style: TextStyle(
                                           color: AppTheme.Colors.blueFIU,
                                           fontSize: 13,

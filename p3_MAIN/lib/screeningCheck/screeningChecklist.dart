@@ -79,7 +79,7 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
                         30), // Position of both the box and the text within it on page.
                 alignment: Alignment.topCenter,
                 child: Container(
-                  height: 152.0,
+                  //height: 152.0,
                   width: 400,
                   decoration: BoxDecoration(
                       // The edged box itself.
@@ -95,7 +95,7 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
                             text: TextSpan(
                           style: TextStyle(
                               fontFamily: "Be Vietnam",
-                              fontSize: 14.0,
+                              fontSize: 16.0,
                               color: Colors.white,
                               fontWeight: FontWeight.normal),
                           children: <TextSpan>[
@@ -106,9 +106,9 @@ class _CheckListPageOneState extends State<CheckListPageOne> {
                             TextSpan(
                                 text: 'that are new or unusual for you?',
                                 style: TextStyle(
-                                    fontSize: 14.0,
+                                    fontSize: 16.0,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w600)),
+                                    fontStyle: FontStyle.normal)),
                             TextSpan(
                               text: ' Select all that apply:',
                             )
@@ -400,7 +400,7 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                               'Have you been in contact with anyone diagnosed with, or displaying symptoms of, COVID-19 within the last 14 days?',
                               style: TextStyle(
                                   fontFamily: "Be Vietnam",
-                                  fontSize: 18.0,
+                                  fontSize: 16.0,
                                   fontWeight: FontWeight.normal,
                                   color: Colors.white))),
                     ),
@@ -441,7 +441,7 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                               'Within the last 14 days, have you tested positive for COVID-19?',
                               style: TextStyle(
                                   fontFamily: "Be Vietnam",
-                                  fontSize: 18.0,
+                                  fontSize: 16.0,
                                   fontWeight: FontWeight.normal,
                                   color: Colors.white))),
                     ),
@@ -483,7 +483,7 @@ class _CheckListPageTwoState extends State<CheckListPageTwo> {
                                 "By submitting this screening, I affirm and attest that all the information and answers to screening questions herein are complete, true and correct to the best of my knowledge.",
                                 style: TextStyle(
                                     fontFamily: "Be Vietnam",
-                                    fontSize: 18.0,
+                                    fontSize: 16.0,
                                     color: FIUNavyBlue),
                               ),
                               Container(

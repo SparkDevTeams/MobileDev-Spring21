@@ -238,6 +238,7 @@ class _RegisterPageState extends State<RegisterPage> {
             length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
 
     exposureNotifID = getRandomString(20);
+    Navigator.pop(context);
 
     final formState = _formkey.currentState;
     if (formState.validate()) {
@@ -252,7 +253,6 @@ class _RegisterPageState extends State<RegisterPage> {
         // TODO: take Database service out of login method.
       } catch (e) {
         print(e.message);
-        Navigator.pop(context);
       }
       // login to firebase
     }

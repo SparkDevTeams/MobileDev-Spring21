@@ -64,7 +64,7 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
                     child: Column(
                       children: [
                         Text(
-                          "When you click “Submit,” students that have been in contact with you that has this app installed will be notified that they have been potentially exposed to COVID-19.",
+                          "When you click “Submit,” students that have been in close proximity with you that has this app will be notified that they have been potentially exposed to COVID-19.",
                           style: TextStyle(
                               fontSize: 15,
                               color: Colors.white,
@@ -74,7 +74,7 @@ class _ExposureConfirmationState extends State<ExposureConfirmation> {
                           height: 30,
                         ),
                         Text(
-                          "However, the system will not tell who exposed they are. Therefore , your identity will remain private. It is in our best interest to preserve and keep the identity of our infected Panthers unknown.",
+                          "However, the system will not tell who exposed them. Therefore, your identity will remain private. It is in our best interest to preserve the identity of our infected Panthers.",
                           style: TextStyle(
                               fontSize: 15,
                               color: Colors.white,

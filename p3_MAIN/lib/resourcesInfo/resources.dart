@@ -163,7 +163,7 @@ class ResourcesPage extends StatelessWidget {
                             height: 8,
                           ),
                           Text(
-                            "This is FIU's website for information such as campus repopulation, testing, relief efforts, etc. COVID-19 updates will also be on this website.",
+                            "This is FIU's website for COVID-19 related information such as campus repopulation, testing, relief efforts, etc. FIU COVID-19 updates will also be on this website.",
                             style: new TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.w400),
                           )
@@ -198,7 +198,7 @@ class ResourcesPage extends StatelessWidget {
                             height: 8,
                           ),
                           Text(
-                            "This website will give you information to which vaccine sites have stock of the COVID-19 vaccine. You can input your location and vaccine preference and it will directly tell you where it is and how you can get it.",
+                            "This website will give you information to which vaccine sites have stock of the COVID-19 vaccine. You can input your location and vaccine preference and it will tell you where it is and how you can get it.",
                             style: new TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.w400),
                           )
